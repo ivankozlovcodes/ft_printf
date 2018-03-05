@@ -6,14 +6,50 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:04:31 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/05 09:50:16 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/05 15:23:32 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(char *fmt, ...)
+size_t	process(va_list args, const char *fmt)
 {
-	write(1, fmt, ft_strlen(fmt));
-	return (0);
+	char	*ptr;
+	char	*start;
+	size_t	len;
+
+	ptr = (char *)fmt;
+	start = ptr;
+	len = 0;
+	va_arg(args, int); // for compiling
+	while (*ptr)
+	{
+		if (*ptr == '%')
+		{
+			// print str before
+			// lne = process arg
+		}
+		else
+		{
+			len++;
+			ptr++;
+		}
+	}
+	ft_putnstr(start, ptr - start);
+	return (len);
+}
+
+int		ft_printf(const char *fmt, ...)
+{
+	va_list	args;
+	int		len;
+
+	len = 0;
+	if (fmt)
+	{
+		va_start(args, fmt);
+		len = process(args, fmt);
+		va_end(args);
+	}
+	return (len);
 }
