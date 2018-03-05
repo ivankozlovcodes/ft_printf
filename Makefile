@@ -6,7 +6,7 @@
 #    By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:22:14 by ikozlov           #+#    #+#              #
-#    Updated: 2018/03/05 09:57:36 by ikozlov          ###   ########.fr        #
+#    Updated: 2018/03/05 10:31:53 by ikozlov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ TEST = a.out
 # libraries
 LIBFT = ft
 
-INCLUDES = -I $(LIBFT_DIR)includes/ -I includes/ 
+INCLUDES = -I $(LIBFT_DIR) -I includes/ 
 
 all: $(NAME)
 
