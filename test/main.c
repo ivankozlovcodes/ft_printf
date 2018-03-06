@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/05 09:51:24 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/05 17:53:09 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int		main(void)
 {
+	int	n;
+
+	n = 3;
 	ft_printf("Hello world!\n");
+	ft_printf("Number: %d\n", n);
 	return (0);
 }
