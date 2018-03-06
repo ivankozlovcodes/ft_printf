@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   printer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/05 17:01:03 by ikozlov          ###   ########.fr       */
+/*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
+/*   Updated: 2018/03/05 17:52:24 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft.h"
-# include <unistd.h>
-# include <stdarg.h>
-
-typedef struct		s_finfo
+size_t	ft_putfmt(void *p, t_finfo *fmt)
 {
-	char			format;
-	char			*p;
-}					t_finfo;
+	char			f;
 
-size_t					ft_printf(const char *fmt, ...);
+	f = fmt->format;
+	if (f == 'd')
+		ft_putnbr(*(int *)p);
+	return (ft_nbrlen(p));
+}
 
-size_t				process_arg(va_list *args, char **ptr);
+size_t	print_arg_int(va_list *args, t_finfo *fmt)
+{
+	long long int	n;
 
-size_t				print_arg_int(va_list *args, t_finfo *fmt);
-
-#endif
+	n = (int)va_arg(*args, long long int);
+	return (ft_putfmt((void *)&n, fmt));
+}
