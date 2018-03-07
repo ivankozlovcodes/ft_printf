@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 12:09:20 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 12:31:33 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,17 @@ size_t	print_arg_uint(va_list *args, t_finfo *fmt)
 	else
 		n = (unsigned int)va_arg(*args, unsigned int);
 	return (ft_putfmt((void *)&n, fmt));
+}
+
+size_t	print_arg_ptr(va_list *args, t_finfo *fmt)
+{
+	void	*p;
+
+	if (fmt->modifier == MDF_L && fmt->format == 's')
+		fmt->format = 'S';
+	// todo: handle unicode strings
+	p = va_arg(*args, void *);
+	return (ft_putfmt(p, fmt));
 }
 
 size_t	print_arg_char(va_list *args, t_finfo *fmt)
