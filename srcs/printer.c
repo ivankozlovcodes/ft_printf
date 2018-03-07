@@ -16,20 +16,27 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 {
 	char			f;
 	char			*s;
+	int				m;
 
 	f = fmt->format;
-	s = ft_itoa(*(int *)p);
+	m = fmt->modifier;
 	if (f == 'd' || f == 'i')
-		ft_putstr(s);
+	{
+		if (m == MDF_LL)
+			s = ft_llitoa(*(long long int *)p);
+		else
+			s = ft_llitoa(*(int *)p);
+	}
+	ft_putstr(s);
 	return (ft_strlen(s));
 }
 
 size_t	print_arg_int(va_list *args, t_finfo *fmt)
 {
-	char			f;
 	int				m;
 	long long int	n;
 
+	m = fmt->modifier;
 	if (m == MDF_LL)
 		n = (long)va_arg(*args, long long int);
 	else
