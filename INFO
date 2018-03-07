@@ -13,3 +13,45 @@ long long:
     max = 922337203,854775,807
     min = −9223372036854775,808
     unsigned = 18446744073709551615
+
+/*
+**%[%][flags][width][(dot)precision][length]specifier
+**
+**Specifiers:
+**	c	int converted to char
+**	C	int converted to wide char
+**	s	string
+**	S	wide char string
+**	p	pointer
+**	di	int, D = ld
+**	u	unsigned, U = lu
+**	o	unsigned in octal, O = lo
+**	x	unsigned in hexadecimal
+**	X	unsigned in hexadecimal uppercase
+**  b	binary
+**
+**Flags:
+**	#		(o,O) prepend '0', x prepend "0x", X prepend "0X"
+**	0		Prepend pad with '0' to width (if specified) for numeric types
+**	-		Left align within width (if specified)
+**	+		Prepend '+' for positive numeric types
+**	(space)	Prepend pad positive numbers with a space
+**
+**Width:
+**	<n>	Minimum of n characters are printed
+**
+**Precision:
+**	(dot)<n>	(idD, uU, oO, xX) Pad with leading zeros if less than n
+**
+**Length (Aka cast as this):
+**	hh	(idD) char,			(uU, oO, xX) unsigned char
+**	h	(idD) short,		(uU, oO, xX) unsigned short
+**	l	(idD) long,			(uU, oO, xX) unsigned long
+**	ll	(idD) long long,	(uU, oO, xX) unsigned long long
+**	j	(idD) intmax_t,		(uU, oO, xX) uintmax_t
+**	z	(idD) size_t,		(uU, oO, xX) size_t
+**
+**Return Value:
+**	Length of printed string
+**.
+*
