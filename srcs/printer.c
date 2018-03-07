@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/06 21:35:28 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 12:09:20 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 			ft_putchar(*(char *)p);
 			len = 1;
 		}
+		else if (f == 'C')
+			write(1, p, sizeof(wchar_t));
 	}
 	if (s)
 		ft_putstr(s);
