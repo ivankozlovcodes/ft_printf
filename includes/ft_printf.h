@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/05 17:01:03 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/06 19:05:25 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdarg.h>
 
 # define MDF_LL (0)
+
+# define OCTAL "01234567"
 
 typedef struct		s_finfo
 {
