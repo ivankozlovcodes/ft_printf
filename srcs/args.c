@@ -33,7 +33,7 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 	char	f;
 
 	f = fmt->format;
-	if (f == 'd')
+	if (f == 'd' || f == 'i')
 		return (print_arg_int(args, fmt));
 	return (0);
 }
