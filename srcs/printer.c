@@ -55,8 +55,17 @@ size_t	print_arg_int(va_list *args, t_finfo *fmt)
 	long long int	n;
 
 	m = fmt->modifier;
+	fmt->base = DECIMAL;
 	if (m == MDF_LL)
 		n = (long long)va_arg(*args, long long int);
+	else if (m == MDF_H)
+		n = (short)va_arg(*args, int);
+	else if (m == MDF_HH)
+		n = (signed char)va_arg(*args, int);
+	else if (m == MDF_J)
+		n = va_arg(*args, intmax_t);
+	else if (m == MDF_Z)
+		n = va_arg(*args, size_t);
 	else
 		n = (int)va_arg(*args, int);
 	return (ft_putfmt((void *)&n, fmt));
