@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 12:24:12 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 14:05:38 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char	*parse_arg(t_finfo *fmt, char **ptr)
 		fmt->modifier = MDF_LL;
 	else if ((tmp = ft_strstredl(*ptr, "l")))
 		fmt->modifier = MDF_L;
-	else if ((tmp = ft_strstredl(*ptr, "h")))
-		fmt->modifier = MDF_H;
 	else if ((tmp = ft_strstredl(*ptr, "hh")))
 		fmt->modifier = MDF_HH;
+	else if ((tmp = ft_strstredl(*ptr, "h")))
+		fmt->modifier = MDF_H;
 	else if ((tmp = ft_strstredl(*ptr, "j")))
 		fmt->modifier = MDF_J;
 	else if ((tmp = ft_strstredl(*ptr, "z")))
