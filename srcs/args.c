@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/06 21:26:41 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 12:15:54 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 	char	*tmp;
 
 	fmt->modifier = -1;
-	if ((tmp = ft_strstr(*ptr, "ll")))
-	{
+	tmp = *ptr;
+	if ((tmp = ft_strstredl(*ptr, "ll")))
 		fmt->modifier = MDF_LL;
-		*ptr = tmp + 2;
-	}
+	else if ((tmp = ft_strstredl(*ptr, "l")))
+		fmt->modifier = MDF_L;
 	fmt->format = **ptr;
 	args++; //for compiling
 	// if (*ptr != '\0')
