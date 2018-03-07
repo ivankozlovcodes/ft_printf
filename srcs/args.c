@@ -6,13 +6,13 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 12:15:54 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 12:24:12 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
+char	*parse_arg(t_finfo *fmt, char **ptr)
 {
 	char	*tmp;
 
@@ -22,8 +22,16 @@ char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 		fmt->modifier = MDF_LL;
 	else if ((tmp = ft_strstredl(*ptr, "l")))
 		fmt->modifier = MDF_L;
+	else if ((tmp = ft_strstredl(*ptr, "h")))
+		fmt->modifier = MDF_H;
+	else if ((tmp = ft_strstredl(*ptr, "hh")))
+		fmt->modifier = MDF_HH;
+	else if ((tmp = ft_strstredl(*ptr, "j")))
+		fmt->modifier = MDF_J;
+	else if ((tmp = ft_strstredl(*ptr, "z")))
+		fmt->modifier = MDF_Z;
+	*ptr = tmp ? tmp : *ptr;
 	fmt->format = **ptr;
-	args++; //for compiling
 	// if (*ptr != '\0')
 	(*ptr)++;
 	return (*ptr);
@@ -57,7 +65,7 @@ size_t	process_arg(va_list *args, char **ptr)
 		(*ptr)++;
 		if (*ptr != '\0')
 		{
-			*ptr = parse_arg(args, &fmt, ptr);
+			*ptr = parse_arg(&fmt, ptr);
 			return (print_arg(args, &fmt));
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/06 21:28:38 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 12:31:54 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 
 # define MDF_LL (0)
 # define MDF_L (1)
+# define MDF_H (2)
+# define MDF_HH (3)
+# define MDF_J (4)
+# define MDF_Z (5)
 
 # define OCTAL "01234567"
 # define HEX "0123456789abcdef"
