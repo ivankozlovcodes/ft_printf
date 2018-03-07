@@ -50,6 +50,8 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 		}
 		else if (f == 'C')
 			write(1, p, sizeof(wchar_t));
+		else if (f == 's')
+			s = (char *)p;
 	}
 	if (s)
 		ft_putstr(s);

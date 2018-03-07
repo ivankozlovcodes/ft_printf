@@ -40,6 +40,8 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 		return (print_arg_uint(args, fmt));
 	else if (f == 'c' || f == 'C')
 		return (print_arg_char(args, fmt));
+	else if (f == 's' || f == 'S')
+		return (print_arg_ptr(args, fmt));
 	return (0);
 }
 

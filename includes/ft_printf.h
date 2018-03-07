@@ -39,5 +39,6 @@ size_t				process_arg(va_list *args, char **ptr);
 size_t				print_arg_int(va_list *args, t_finfo *fmt);
 size_t				print_arg_uint(va_list *args, t_finfo *fmt);
 size_t				print_arg_char(va_list *args, t_finfo *fmt);
+size_t				print_arg_ptr(va_list *args, t_finfo *fmt);
 
 #endif
