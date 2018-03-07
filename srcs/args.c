@@ -14,6 +14,13 @@
 
 char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 {
+	char	*tmp;
+
+	if ((tmp = ft_strstr(*ptr, "%ll")))
+	{
+		fmt->modifier = MDF_LL;
+		*ptr = ++tmp;
+	}
 	fmt->format = **ptr;
 	args++; //for compiling
 	// if (*ptr != '\0')
@@ -26,7 +33,7 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 	char	f;
 
 	f = fmt->format;
-	if (f == 'd')
+	if (f == 'd' || f == 'i')
 		return (print_arg_int(args, fmt));
 	return (0);
 }
