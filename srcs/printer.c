@@ -43,3 +43,10 @@ size_t	print_arg_int(va_list *args, t_finfo *fmt)
 		n = (int)va_arg(*args, int);
 	return (ft_putfmt((void *)&n, fmt));
 }
+
+size_t				print_arg_uint(va_list *args, t_finfo *fmt)
+{
+	args++;
+	fmt++;
+	return (0);
+}
