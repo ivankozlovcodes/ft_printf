@@ -17,10 +17,13 @@
 # include <unistd.h>
 # include <stdarg.h>
 
+# define MDF_LL (0)
+
 typedef struct		s_finfo
 {
 	char			format;
 	char			*p;
+	int				modifier;
 }					t_finfo;
 
 size_t					ft_printf(const char *fmt, ...);
