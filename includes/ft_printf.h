@@ -18,6 +18,7 @@
 # include <stdarg.h>
 
 # define MDF_LL (0)
+# define MDF_L (1)
 
 # define OCTAL "01234567"
 # define HEX "0123456789abcdef"

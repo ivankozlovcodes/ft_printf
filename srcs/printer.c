@@ -59,7 +59,7 @@ size_t	print_arg_int(va_list *args, t_finfo *fmt)
 	return (ft_putfmt((void *)&n, fmt));
 }
 
-size_t				print_arg_uint(va_list *args, t_finfo *fmt)
+size_t	print_arg_uint(va_list *args, t_finfo *fmt)
 {
 	unsigned long long int	n;
 	int						m;
@@ -69,5 +69,22 @@ size_t				print_arg_uint(va_list *args, t_finfo *fmt)
 		n = (unsigned long long)va_arg(*args, unsigned long long int);
 	else
 		n = (unsigned int)va_arg(*args, unsigned int);
+	return (ft_putfmt((void *)&n, fmt));
+}
+
+size_t	print_arg_char(va_list *args, t_finfo *fmt)
+{
+	wint_t		n;
+	char		f;
+	int			m;
+
+	m = fmt->modifier;
+	f = fmt->format;
+	if (m == MDF_L)
+		f = 'C';
+	if (f == 'C')
+		n = (wchar_t)va_list(*args, wint_t);
+	else
+		n = (char)va_list(*args, int);
 	return (ft_putfmt((void *)&n, fmt));
 }
