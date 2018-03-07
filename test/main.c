@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/06 19:19:50 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/06 21:30:46 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int		main(void)
 	ft_printf("o number: %llo\n", n);
 	ft_printf("x number: %x\n", n);
 	ft_printf("X number: %X\n", n);
+	ft_printf("Printable char %c\n", 'a');
+	ft_printf("Printable char %c\n", 'A');
 	printf("ORIGINAL\n ============================\n");
 	printf("Octal over int(o): %o\n", INT32_MAX + 10);
+	printf("Printable char %c\n", 'a');
 	return (0);
 }
