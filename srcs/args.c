@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/06 16:33:20 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/06 21:26:41 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 {
 	char	*tmp;
 
+	fmt->modifier = -1;
 	if ((tmp = ft_strstr(*ptr, "ll")))
 	{
 		fmt->modifier = MDF_LL;
@@ -37,6 +38,8 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 		return (print_arg_int(args, fmt));
 	else if (ft_strchr("ouxX", f) != NULL)
 		return (print_arg_uint(args, fmt));
+	else if (f == 'c' || f == 'C')
+		return (print_arg_char(args, fmt));
 	return (0);
 }
 

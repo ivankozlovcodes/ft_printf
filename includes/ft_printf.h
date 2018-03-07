@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/06 19:19:28 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/06 21:28:38 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <unistd.h>
 # include <stdarg.h>
+#include <wchar.h>
 
 # define MDF_LL (0)
 # define MDF_L (1)
@@ -37,5 +38,6 @@ size_t				process_arg(va_list *args, char **ptr);
 
 size_t				print_arg_int(va_list *args, t_finfo *fmt);
 size_t				print_arg_uint(va_list *args, t_finfo *fmt);
+size_t				print_arg_char(va_list *args, t_finfo *fmt);
 
 #endif

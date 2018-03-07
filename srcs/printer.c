@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/06 19:18:50 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/06 21:35:28 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 	char			f;
 	char			*s;
 	int				m;
+	size_t			len;
 
 	f = fmt->format;
 	m = fmt->modifier;
+	s = NULL;
 	if (m == MDF_LL)
 	{
 		if (f == 'd' || f == 'i')
@@ -41,9 +43,15 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 			s = ft_llitoa_tobase(*(unsigned long long int *)p, OCTAL);
 		else if (f == 'x' || f == 'X')
 			s = ft_llitoa_tobase(*(unsigned long long int *)p, f == 'x' ? HEX : HEX_UPPER);
+		else if (f == 'c')
+		{
+			ft_putchar(*(char *)p);
+			len = 1;
+		}
 	}
-	ft_putstr(s);
-	return (ft_strlen(s));
+	if (s)
+		ft_putstr(s);
+	return (s ? ft_strlen(s) : len);
 }
 
 size_t	print_arg_int(va_list *args, t_finfo *fmt)
@@ -83,8 +91,8 @@ size_t	print_arg_char(va_list *args, t_finfo *fmt)
 	if (m == MDF_L)
 		f = 'C';
 	if (f == 'C')
-		n = (wchar_t)va_list(*args, wint_t);
+		n = (wchar_t)va_arg(*args, wint_t);
 	else
-		n = (char)va_list(*args, int);
+		n = (char)va_arg(*args, int);
 	return (ft_putfmt((void *)&n, fmt));
 }
