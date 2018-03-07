@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/06 19:06:12 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/06 19:18:50 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 			s = ft_llitoa(*(unsigned long long int *)p);
 		else if (f == 'o')
 			s = ft_llitoa_tobase(*(unsigned long long int *)p, OCTAL);
+		else if (f == 'x' || f == 'X')
+			s = ft_llitoa_tobase(*(long long int *)p, f == 'x' ? HEX : HEX_UPPER);
 	}
 	else
 	{
@@ -37,6 +39,8 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 			s = ft_llitoa(*(unsigned int *)p);
 		else if (f == 'o')
 			s = ft_llitoa_tobase(*(unsigned long long int *)p, OCTAL);
+		else if (f == 'x' || f == 'X')
+			s = ft_llitoa_tobase(*(unsigned long long int *)p, f == 'x' ? HEX : HEX_UPPER);
 	}
 	ft_putstr(s);
 	return (ft_strlen(s));

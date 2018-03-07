@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/06 19:05:25 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/06 19:19:28 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define MDF_LL (0)
 
 # define OCTAL "01234567"
+# define HEX "0123456789abcdef"
+# define HEX_UPPER "0123456789ABCDEF"
 
 typedef struct		s_finfo
 {
