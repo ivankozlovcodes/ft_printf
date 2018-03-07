@@ -15,9 +15,12 @@
 int		main(void)
 {
 	int	n;
+	long long	lln;
 
 	n = 3;
+	lln = 9223372036854775807;
 	ft_printf("Hello world!\n");
 	ft_printf("Number: %d\n", n);
+	ft_printf("ll number: %lld\n", lln);
 	return (0);
 }
