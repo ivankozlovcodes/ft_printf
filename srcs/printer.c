@@ -23,16 +23,7 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 	m = fmt->modifier;
 	s = NULL;
 	if (m == MDF_LL)
-	{
-		if (f == 'd' || f == 'i')
-			s = ft_llitoa(*(long long int *)p);
-		else if (f == 'u')
-			s = ft_llitoa(*(unsigned long long int *)p);
-		else if (f == 'o')
-			s = ft_llitoa_tobase(*(unsigned long long int *)p, OCTAL);
-		else if (f == 'x' || f == 'X')
-			s = ft_llitoa_tobase(*(long long int *)p, f == 'x' ? HEX : HEX_UPPER);
-	}
+			s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
 	else
 	{
 		if (f == 'd' || f == 'i')
