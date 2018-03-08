@@ -6,28 +6,73 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 19:09:25 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 21:39:17 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
+{
+	if (fmt->format == 'd' || fmt->format == 'i')
+	{
+		if (has_flag(fmt, '+') && *output != '-')
+			ft_putchar('+');
+		if (has_flag(fmt, ' '))
+			fmt->width = MAX(fmt->width, (int)output_len + 1);
+	}
+	if (has_flag(fmt, '-'))
+		fmt->padding = -1;
+	fmt->padding_char = has_flag(fmt, '0') ? '0' : ' ';
+	if (has_flag(fmt, '#'))
+	{
+		if (fmt->format == 'x')
+			ft_putstr("0x");
+		if (fmt->format == 'X')
+			ft_putstr("0X");
+		if (fmt->format == 'o')
+			ft_putchar('0');
+	}
+}
+
+size_t	ft_putfmtc(char c, t_finfo *fmt)
+{
+	apply_flags(fmt, &c, 1);
+	if (fmt->padding > 0)
+		ft_putnchar(fmt->padding_char, fmt->width - 1);
+	ft_putchar(c);
+	if (fmt->padding < 0)
+		ft_putnchar(fmt->padding_char, fmt->width - 1);
+	return (MAX(fmt->width, 1));
+}
+
+size_t	ft_putfmtstr(t_finfo *fmt, char *s)
+{
+	size_t	len;
+
+	if ((int)(len = ft_strlen(s)) < fmt->precision)
+		s = ft_toprecision(s, fmt->precision - len);
+	apply_flags(fmt, s, len);
+	if (fmt->padding > 0)
+		ft_putnchar(fmt->padding_char, fmt->width - len);
+	ft_putstr(s);
+	if (fmt->padding < 0)
+		ft_putnchar(fmt->padding_char, fmt->width - len);
+	len = MAX(fmt->width, (int)len);
+	return (len);
+}
 
 size_t	ft_putfmt(void *p, t_finfo *fmt)
 {
 	char			f;
 	char			*s;
 	int				m;
-	size_t			len;
 
 	f = fmt->format;
 	m = fmt->modifier;
 	s = NULL;
 	if (m == MDF_LL)
 		s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
-	// else if (m = MDF_H)
-	// {
-	// 	if (ft_strchr("diu"))
-	// }
 	else
 	{
 		if (f == 'd' || f == 'i')
@@ -39,27 +84,13 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 		else if (f == 'x' || f == 'X')
 			s = ft_llitoa_tobase(*(unsigned long long int *)p, f == 'x' ? HEX : HEX_UPPER);
 		else if (f == 'c')
-		{
-			ft_putchar(*(char *)p);
-			len = 1;
-		}
+			return (ft_putfmtc(*(char *)p, fmt));
 		else if (f == 'C')
 			write(1, p, sizeof(wchar_t));
 		else if (f == 's')
 			s = (char *)p;
 	}
-	if (s)
-	{
-		if ((int)(len = ft_strlen(s)) < fmt->precision)
-			s = ft_toprecision(s, fmt->precision - len);
-		if (fmt->width && fmt->padding > 0)
-			ft_putnchar(' ', fmt->width - len);
-		ft_putstr(s);
-		if (fmt->width && fmt->padding < 0)
-			ft_putnchar(' ', fmt->width - len);
-		len = MAX(fmt->width, (int)len);
-	}
-	return (len);
+	return (ft_putfmtstr(fmt, s));
 }
 
 int		to_little_endian(int c)
@@ -184,3 +215,4 @@ size_t	print_arg_char(va_list *args, t_finfo *fmt)
 		n = (char)va_arg(*args, int);
 	return (ft_putfmt((void *)&n, fmt));
 }
+
