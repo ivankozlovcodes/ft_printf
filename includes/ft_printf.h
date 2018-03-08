@@ -41,6 +41,8 @@ typedef struct		s_finfo
 	char			*base;
 	int				modifier;
 	int				precision;
+	int				width;
+	int				padding;
 }					t_finfo;
 
 size_t					ft_printf(const char *fmt, ...);
@@ -56,5 +58,9 @@ int					skipstr(char **s1, char *s2);
 int					skipchr(char **s, char c);
 int					ft_prsnbr(char **s, int *dst);
 char				*ft_toprecision(char *s, int n);
+char				*ft_addchartostr(char *s, char c, int times, int dir);
+void				ft_putnchar(char c, int n);
+
+# define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 #endif

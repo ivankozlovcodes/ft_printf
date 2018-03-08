@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 14:30:47 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 19:09:25 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 	m = fmt->modifier;
 	s = NULL;
 	if (m == MDF_LL)
-			s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
+		s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
+	// else if (m = MDF_H)
+	// {
+	// 	if (ft_strchr("diu"))
+	// }
 	else
 	{
 		if (f == 'd' || f == 'i')
@@ -46,9 +50,14 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 	}
 	if (s)
 	{
-		if ((len = ft_strlen(s)) < (size_t)fmt->precision)
+		if ((int)(len = ft_strlen(s)) < fmt->precision)
 			s = ft_toprecision(s, fmt->precision - len);
+		if (fmt->width && fmt->padding > 0)
+			ft_putnchar(' ', fmt->width - len);
 		ft_putstr(s);
+		if (fmt->width && fmt->padding < 0)
+			ft_putnchar(' ', fmt->width - len);
+		len = MAX(fmt->width, (int)len);
 	}
 	return (len);
 }

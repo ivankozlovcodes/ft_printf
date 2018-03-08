@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 17:24:37 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 18:10:48 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 18:57:09 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,30 @@ char	*ft_toprecision(char *s, int n)
 	ft_strcpy(res, s);
 	free(s);
 	return (head);
+}
+
+char	*ft_addchartostr(char *s, char c, int times, int dir)
+{
+	size_t		len;
+	char		*head;
+	char		*ptr;
+
+	len = ft_strlen(s);
+	ptr = ft_strnew(len + times);
+	head = ptr;
+	ptr = dir ? ptr : ptr + len + times - 1;
+	while (times-- > 0)
+	{
+		*ptr = c;
+		ptr += dir;
+	}
+	ft_strcpy(ptr, s);
+	// free(s);
+	return (head);
+}
+
+void	ft_putnchar(char c, int n)
+{
+	while (n--)
+		ft_putchar(c);
 }

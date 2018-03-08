@@ -6,13 +6,13 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 18:04:38 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 19:53:35 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		set_precision(int *dst, char **ptr)
+int		parse_wildchar(int *dst, char **ptr)
 {
 	// todo: handle *
 	if (!ft_prsnbr(ptr, dst))
@@ -24,11 +24,14 @@ char	*parse_arg(t_finfo *fmt, char **ptr)
 {
 	char	*tmp;
 
+	parse_wildchar(&(fmt->width), ptr);
+	if (fmt->width < 0)
+	{
+		fmt->width = -fmt->width;
+		fmt->padding = -1;
+	}
 	if (skipchr(ptr, '.'))
-		set_precision(&(fmt->precision), ptr);
-	else
-		fmt->precision = -1;
-	fmt->modifier = -1;
+		parse_wildchar(&(fmt->precision), ptr);
 	tmp = *ptr;
 	if ((tmp = ft_strstredl(*ptr, "ll")))
 		fmt->modifier = MDF_LL;
@@ -72,6 +75,10 @@ size_t	process_arg(va_list *args, char **ptr)
 {
 	t_finfo	fmt;
 
+	fmt.modifier = -1;
+	fmt.width = 0;
+	fmt.padding = 1;
+	fmt.precision = -1;
 	if (**ptr == '%')
 	{
 		(*ptr)++;
