@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 22:24:21 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/08 10:52:06 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,25 @@ int		main(void)
 	// ft_printf("%s\n", "诶");
 	// ft_printf("String: %s\n", "asdasdASD");
 	// ft_printf("hhd of 128 %hhd\n", 128);
-	ft_printf("precision for 123: %.6d\n", 123);
+	// ft_printf("precision for 123: %.6d\n", 123);
 	// ft_printf("Width for hello: [%10s]\n", "Hello");
 	// ft_printf("Width for hello: [%-10s]\n", "Hello");
-	ft_printf("' ' flag |% d|\n", n); 
-	ft_printf("' ' flag |% x|\n", n); 
-	ft_printf("' ' flag for negative |%  d|\n", -n); 
-	ft_printf("'0' flag |%0010x|\n", n); 
-	ft_printf("'0' flag |%0010s|\n", "string"); 
-	ft_printf("'+' flag |%++d|\n", n); 
-	ft_printf("'+' flag |%++hd|\n", n); 
-	ft_printf("padding with '-' flag |%--10d|\n", n); 
-	ft_printf("padding without '-' flag |%10d|\n", n); 
-	ft_printf("Double persent: |%10%|\n", n);
-	ft_printf("'#' flag |%##x|\n", n); 
-	ft_printf("Triple persent: |%%%|\n", n);
+	// ft_printf("' ' flag |% d|\n", n); 
+	// ft_printf("' ' flag |% x|\n", n); 
+	// ft_printf("' ' flag for negative |%  d|\n", -n); 
+	// ft_printf("'0' flag |%0010x|\n", n); 
+	// ft_printf("'0' flag |%0010s|\n", "string"); 
+	// ft_printf("'+' flag |%++d|\n", n); 
+	// ft_printf("'+' flag |%++hd|\n", n); 
+	// ft_printf("padding with '-' flag |%--10d|\n", n); 
+	// ft_printf("padding without '-' flag |%10d|\n", n); 
+	// ft_printf("Double persent: |%10%|\n", n);
+	// ft_printf("'#' flag |%##x|\n", n); 
+	// ft_printf("Triple persent: |%%%|\n", n);
 	printf("ORIGINAL\n ============================\n");
+	printf("%d %d %d %d\n", sizeof(long int), sizeof(long), sizeof(long long int), sizeof(long long));
+	// printf("Itoa of 922337203854775807: |%s|\n", ft_llitoa_tobase2(922337203854775808, DECIMAL));
+	printf("Itoa of 18446744073709551615: |%s|\n", ft_ullitoa_tobase(18446744073709551615, DECIMAL));
 	printf("llneg number: %lld\n", llneg);
 	printf("llneg number octal: %llo\n", llneg);
 	printf("llneg number octal: %llx\n", llneg);
