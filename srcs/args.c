@@ -6,16 +6,28 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 14:05:38 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 18:04:38 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int		set_precision(int *dst, char **ptr)
+{
+	// todo: handle *
+	if (!ft_prsnbr(ptr, dst))
+		return (0);
+	return (1);
+}
+
 char	*parse_arg(t_finfo *fmt, char **ptr)
 {
 	char	*tmp;
 
+	if (skipchr(ptr, '.'))
+		set_precision(&(fmt->precision), ptr);
+	else
+		fmt->precision = -1;
 	fmt->modifier = -1;
 	tmp = *ptr;
 	if ((tmp = ft_strstredl(*ptr, "ll")))

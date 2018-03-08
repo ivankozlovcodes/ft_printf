@@ -45,8 +45,12 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 			s = (char *)p;
 	}
 	if (s)
+	{
+		if ((len = ft_strlen(s)) < (size_t)fmt->precision)
+			s = ft_toprecision(s, fmt->precision - len);
 		ft_putstr(s);
-	return (s ? ft_strlen(s) : len);
+	}
+	return (len);
 }
 
 int		to_little_endian(int c)
