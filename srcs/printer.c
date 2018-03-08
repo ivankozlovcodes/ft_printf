@@ -49,6 +49,57 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 	return (s ? ft_strlen(s) : len);
 }
 
+int		to_little_endian(int c)
+{
+	return (((c >> 24) & 0xff) | ((c << 8) & 0xff0000) |
+		((c >> 8) & 0xff00) | ((c << 24) & 0xff000000));
+}
+
+int		get_mask(wint_t c, size_t *len)
+{
+	if (c <= 0x7FF)
+	{
+		*len = 2;
+		return(TWO_BYTES_MASK);
+	}
+	else if (c <= 0xFFFF)
+	{
+		*len = 3;
+		return (THREE_BYTES_MASK);
+	}
+	else
+	{
+		*len = 4;
+		return (FOUR_BYTES_MASK);
+	}
+}
+
+size_t	ft_print_wchar(wint_t c)
+{
+	int		output;
+	size_t	len;
+
+	output = FOUR_BYTES_MASK;
+	if (c <= 0x7F)
+	{
+		output = c & 127;
+		len = 1;
+	}
+	else
+	{
+		output = get_mask(c, &len);
+		output |= (((c >> 6) & 0x3F) << 8) | (c & 0x3F);
+		if (c > 0x7FF)
+			output |= (((c >> 12) & 0xF) << 16);
+		if (c > 0xFFFF)
+			output |= (((c >> 18) & 0x7) << 24);
+	}
+	output = to_little_endian(output);
+	write(1, &output, 4);
+	return (len);
+}
+
+
 size_t	print_arg_int(va_list *args, t_finfo *fmt)
 {
 	int				m;
