@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 22:31:00 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/08 11:14:31 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,50 +71,21 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 	f = fmt->format;
 	s = NULL;
 	if (fmt->modifier == MDF_LL)
-		s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
+		s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
 	else
 	{
 		if (f == 'd' || f == 'i')
-			s = ft_llitoa(*(int *)p);
+			s = ft_llitoa_tobase(*(int *)p, DECIMAL);
 		else if (f == 'u')
-			s = ft_llitoa(*(unsigned int *)p);
-		else if (f == 'o')
-			s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
-		else if (f == 'x' || f == 'X')
+			s = ft_llitoa_tobase(*(unsigned int *)p, DECIMAL);
+		else if (ft_strchr("oxX", f))
 			s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
 		else if (f == 'c')
 			return (ft_putfmtc(*(char *)p, fmt));
-		else if (f == 'C')
-			write(1, p, sizeof(wchar_t));
 		else if (f == 's')
 			s = (char *)p;
 	}
 	return (ft_putfmtstr(fmt, s));
-}
-
-int		to_little_endian(int c)
-{
-	return (((c >> 24) & 0xff) | ((c << 8) & 0xff0000) |
-		((c >> 8) & 0xff00) | ((c << 24) & 0xff000000));
-}
-
-int		get_mask(wint_t c, size_t *len)
-{
-	if (c <= 0x7FF)
-	{
-		*len = 2;
-		return (TWO_BYTES_MASK);
-	}
-	else if (c <= 0xFFFF)
-	{
-		*len = 3;
-		return (THREE_BYTES_MASK);
-	}
-	else
-	{
-		*len = 4;
-		return (FOUR_BYTES_MASK);
-	}
 }
 
 size_t	ft_print_wchar(wint_t c)
