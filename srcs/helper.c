@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 17:24:37 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 18:57:09 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 21:00:13 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ char	*ft_addchartostr(char *s, char c, int times, int dir)
 
 void	ft_putnchar(char c, int n)
 {
-	while (n--)
+	while (n-- > 0)
 		ft_putchar(c);
 }
 
