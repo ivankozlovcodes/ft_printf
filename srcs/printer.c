@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/08 11:43:45 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/08 13:51:41 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,27 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 
 	f = fmt->format;
 	s = NULL;
-	if (fmt->modifier == MDF_LL)
-		s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
+	if (ft_strchr("ouxX", f))
+		s = ft_ullitoa_tobase(*(unsigned long long int *)p, fmt->base);
+	else if (f == 'c')
+		return (ft_putfmtc(*(char *)p, fmt));
+	else if (f == 's')
+		s = (char *)p;
 	else
-	{
-		if (f == 'd' || f == 'i')
-			s = ft_llitoa_tobase(*(int *)p, DECIMAL);
-		else if (f == 'u')
-			s = ft_llitoa_tobase(*(unsigned int *)p, DECIMAL);
-		else if (ft_strchr("oxX", f))
-			s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
-		else if (f == 'c')
-			return (ft_putfmtc(*(char *)p, fmt));
-		else if (f == 's')
-			s = (char *)p;
-	}
+		s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
+	// if (fmt->modifier == MDF_LL)
+	// 	s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
+	// else
+	// 	if (f == 'd' || f == 'i')
+	// 		s = ft_llitoa_tobase(*(int *)p, DECIMAL);
+	// 	else if (f == 'u')
+	// 		s = ft_ullitoa_tobase(*(unsigned int *)p, DECIMAL);
+	// 	else if (ft_strchr("oxX", f))
+	// 		s = ft_ullitoa_tobase(*(unsigned long long int *)p, fmt->base);
+	// 	else if (f == 'c')
+	// 		return (ft_putfmtc(*(char *)p, fmt));
+	// 	else if (f == 's')
+	// 		s = (char *)p;
 	return (ft_putfmtstr(fmt, s));
 }
 
