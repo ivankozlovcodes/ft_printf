@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 21:39:17 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 22:31:00 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ size_t	ft_putfmtstr(t_finfo *fmt, char *s)
 	size_t	len;
 
 	if ((int)(len = ft_strlen(s)) < fmt->precision)
-		s = ft_toprecision(s, fmt->precision - len);
+		ft_putnchar('0', fmt->precision - len);
+	len = MAX(fmt->precision, (int)len);
 	apply_flags(fmt, s, len);
 	if (fmt->padding > 0)
 		ft_putnchar(fmt->padding_char, fmt->width - len);
@@ -66,12 +67,10 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 {
 	char			f;
 	char			*s;
-	int				m;
 
 	f = fmt->format;
-	m = fmt->modifier;
 	s = NULL;
-	if (m == MDF_LL)
+	if (fmt->modifier == MDF_LL)
 		s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
 	else
 	{
@@ -80,9 +79,9 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 		else if (f == 'u')
 			s = ft_llitoa(*(unsigned int *)p);
 		else if (f == 'o')
-			s = ft_llitoa_tobase(*(unsigned long long int *)p, OCTAL);
+			s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
 		else if (f == 'x' || f == 'X')
-			s = ft_llitoa_tobase(*(unsigned long long int *)p, f == 'x' ? HEX : HEX_UPPER);
+			s = ft_llitoa_tobase(*(unsigned long long int *)p, fmt->base);
 		else if (f == 'c')
 			return (ft_putfmtc(*(char *)p, fmt));
 		else if (f == 'C')
@@ -104,7 +103,7 @@ int		get_mask(wint_t c, size_t *len)
 	if (c <= 0x7FF)
 	{
 		*len = 2;
-		return(TWO_BYTES_MASK);
+		return (TWO_BYTES_MASK);
 	}
 	else if (c <= 0xFFFF)
 	{
@@ -142,7 +141,6 @@ size_t	ft_print_wchar(wint_t c)
 	write(1, &output, 4);
 	return (len);
 }
-
 
 size_t	print_arg_int(va_list *args, t_finfo *fmt)
 {
@@ -190,7 +188,6 @@ size_t	print_arg_ptr(va_list *args, t_finfo *fmt)
 
 	if (fmt->modifier == MDF_L && fmt->format == 's')
 		fmt->format = 'S';
-	// todo: handle unicode strings
 	p = va_arg(*args, void *);
 	return (ft_putfmt(p, fmt));
 }
@@ -209,10 +206,8 @@ size_t	print_arg_char(va_list *args, t_finfo *fmt)
 	{
 		n = (wint_t)va_arg(*args, wint_t);
 		return (ft_print_wchar(n));
-		// write(1, &n, 4);
 	}
 	else
 		n = (char)va_arg(*args, int);
 	return (ft_putfmt((void *)&n, fmt));
 }
-

@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 17:24:37 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 21:00:13 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 22:24:47 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,42 +58,6 @@ int		ft_prsnbr(char **s, int *dst)
 	return (1);
 }
 
-char	*ft_toprecision(char *s, int n)
-{
-	size_t		len;
-	char		*head;
-	char		*res;
-
-	len = ft_strlen(s);
-	res = ft_strnew(len + n);
-	head = res;
-	while (n-- > 0)
-		*res++ = '0';
-	ft_strcpy(res, s);
-	free(s);
-	return (head);
-}
-
-char	*ft_addchartostr(char *s, char c, int times, int dir)
-{
-	size_t		len;
-	char		*head;
-	char		*ptr;
-
-	len = ft_strlen(s);
-	ptr = ft_strnew(len + times);
-	head = ptr;
-	ptr = dir ? ptr : ptr + len + times - 1;
-	while (times-- > 0)
-	{
-		*ptr = c;
-		ptr += dir;
-	}
-	ft_strcpy(ptr, s);
-	// free(s);
-	return (head);
-}
-
 void	ft_putnchar(char c, int n)
 {
 	while (n-- > 0)
@@ -103,4 +67,17 @@ void	ft_putnchar(char c, int n)
 int		has_flag(t_finfo *f, char flag)
 {
 	return (ft_strchr(f->flags, flag) ? 1 : 0);
+}
+
+int		ft_strchri(char *s, char c)
+{
+	int		i;
+
+	i = -1;
+	while (s && s[++i])
+	{
+		if (s[i] == c)
+			return (i);
+	}
+	return (-1);
 }

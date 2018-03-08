@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 21:47:08 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 22:19:43 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,14 @@ char	*parse_arg(t_finfo *fmt, char **ptr)
 	tmp = *ptr;
 	if ((tmp = ft_strstredl(*ptr, "ll")))
 		fmt->modifier = MDF_LL;
-	else if ((tmp = ft_strstredl(*ptr, "l")))
-		fmt->modifier = MDF_L;
+	else if ((fmt->modifier = ft_strchri(FORMATS, **ptr)) != -1)
+		(*ptr)++;
 	else if ((tmp = ft_strstredl(*ptr, "hh")))
 		fmt->modifier = MDF_HH;
-	else if ((tmp = ft_strstredl(*ptr, "h")))
-		fmt->modifier = MDF_H;
-	else if ((tmp = ft_strstredl(*ptr, "j")))
-		fmt->modifier = MDF_J;
-	else if ((tmp = ft_strstredl(*ptr, "z")))
-		fmt->modifier = MDF_Z;
 	*ptr = tmp ? tmp : *ptr;
 	fmt->format = **ptr;
-	// if (*ptr != '\0')
-	(*ptr)++;
+	if (*ptr != '\0')
+		(*ptr)++;
 	return (*ptr);
 }
 
@@ -85,9 +79,6 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 	return (0);
 }
 
-/*
-** Prints an argument according to format specified
-*/
 size_t	process_arg(va_list *args, char **ptr)
 {
 	t_finfo	fmt;

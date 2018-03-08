@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 21:40:12 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 22:24:21 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		main(void)
 	// ft_printf("%s\n", "诶");
 	// ft_printf("String: %s\n", "asdasdASD");
 	// ft_printf("hhd of 128 %hhd\n", 128);
-	// ft_printf("precision for 123: %.6d\n", 123);
+	ft_printf("precision for 123: %.6d\n", 123);
 	// ft_printf("Width for hello: [%10s]\n", "Hello");
 	// ft_printf("Width for hello: [%-10s]\n", "Hello");
 	ft_printf("' ' flag |% d|\n", n); 
