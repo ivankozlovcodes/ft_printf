@@ -6,7 +6,7 @@
 #    By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:22:14 by ikozlov           #+#    #+#              #
-#    Updated: 2018/03/05 17:46:39 by ikozlov          ###   ########.fr        #
+#    Updated: 2018/03/07 14:01:11 by ikozlov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ fclean: clean
 	@echo "[INFO] Executable removed"
 
 test: all
-	gcc $(CFLAGS) $(DEBUG) test/*.c -L . -l ftprintf $(INCLUDES) -o $(TEST)
+	gcc $(DEBUG) test/*.c -L . -l ftprintf $(INCLUDES) -o $(TEST)
 
 re: fclean all
 
