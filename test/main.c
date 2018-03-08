@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/08 10:52:06 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/08 13:54:17 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ int		main(void)
 	c = L'诶';
 	printf("Wchar (a): %lc\n", c);
 	printf("Wchar as char (a): %d: %c\n", c, c);
+	int		a = 2147483647;
+	void	*pa = (void *)&a;
+	// 101111111 11111111 11111111 11111111
+	// 110000000 00000000 00000000 00011010
+	printf("Test &a as long long int: %lld\n", *(long long *)pa);
+	ft_printf("Mine: %lld\n", *(long long *)pa);
+	printf("Negative as llx: %llx\n", -2147483648);
+	ft_printf("Mine llx: %llx\n", -2147483648);
+	printf("Negative as lx: %lx\n", -2147483648);
+	ft_printf("Mine lx: %lx\n", -2147483648);
+	printf("Negative as x: %x\n", -2147483648);
+	ft_printf("Mine x: %x\n", -2147483648);
 	// // int wchar = 35830;
 	// write(1, &c, 4);
 	// // ft_printf("Hello world!\n");
@@ -67,8 +79,13 @@ int		main(void)
 	// ft_printf("Double persent: |%10%|\n", n);
 	// ft_printf("'#' flag |%##x|\n", n); 
 	// ft_printf("Triple persent: |%%%|\n", n);
+	printf("Fixing 42 checker\n ============================\n");
+	// ft_printf("%lx\n", 4294967296);
+	// ft_printf("%hhX\n", 4294967296);
+	// ft_printf("%jx\n", 4294967296);
+	ft_printf("%jx\n", -4294967296);
 	printf("ORIGINAL\n ============================\n");
-	printf("%d %d %d %d\n", sizeof(long int), sizeof(long), sizeof(long long int), sizeof(long long));
+	// printf("%d %d %d %d\n", sizeof(long int), sizeof(long), sizeof(long long int), sizeof(long long));
 	// printf("Itoa of 922337203854775807: |%s|\n", ft_llitoa_tobase2(922337203854775808, DECIMAL));
 	printf("Itoa of 18446744073709551615: |%s|\n", ft_ullitoa_tobase(18446744073709551615, DECIMAL));
 	printf("llneg number: %lld\n", llneg);
