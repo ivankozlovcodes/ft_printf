@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 16:39:09 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 18:08:10 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct		s_finfo
 	char			*p;
 	char			*base;
 	int				modifier;
+	int				precision;
 }					t_finfo;
 
 size_t					ft_printf(const char *fmt, ...);
@@ -50,5 +51,10 @@ size_t				print_arg_int(va_list *args, t_finfo *fmt);
 size_t				print_arg_uint(va_list *args, t_finfo *fmt);
 size_t				print_arg_char(va_list *args, t_finfo *fmt);
 size_t				print_arg_ptr(va_list *args, t_finfo *fmt);
+
+int					skipstr(char **s1, char *s2);
+int					skipchr(char **s, char c);
+int					ft_prsnbr(char **s, int *dst);
+char				*ft_toprecision(char *s, int n);
 
 #endif
