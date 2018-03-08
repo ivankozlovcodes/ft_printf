@@ -166,7 +166,11 @@ size_t	print_arg_char(va_list *args, t_finfo *fmt)
 	if (m == MDF_L)
 		f = 'C';
 	if (f == 'C')
-		n = (wchar_t)va_arg(*args, wint_t);
+	{
+		n = (wint_t)va_arg(*args, wint_t);
+		return (ft_print_wchar(n));
+		// write(1, &n, 4);
+	}
 	else
 		n = (char)va_arg(*args, int);
 	return (ft_putfmt((void *)&n, fmt));
