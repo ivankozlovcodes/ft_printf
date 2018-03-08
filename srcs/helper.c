@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 17:24:37 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 22:24:47 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/08 10:57:21 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,21 @@ int		has_flag(t_finfo *f, char flag)
 	return (ft_strchr(f->flags, flag) ? 1 : 0);
 }
 
-int		ft_strchri(char *s, char c)
+int		get_mask(wint_t c, size_t *len)
 {
-	int		i;
-
-	i = -1;
-	while (s && s[++i])
+	if (c <= 0x7FF)
 	{
-		if (s[i] == c)
-			return (i);
+		*len = 2;
+		return (TWO_BYTES_MASK);
 	}
-	return (-1);
+	else if (c <= 0xFFFF)
+	{
+		*len = 3;
+		return (THREE_BYTES_MASK);
+	}
+	else
+	{
+		*len = 4;
+		return (FOUR_BYTES_MASK);
+	}
 }
