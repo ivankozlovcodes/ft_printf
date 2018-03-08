@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 18:08:10 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/07 21:21:25 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ size_t				print_arg_int(va_list *args, t_finfo *fmt);
 size_t				print_arg_uint(va_list *args, t_finfo *fmt);
 size_t				print_arg_char(va_list *args, t_finfo *fmt);
 size_t				print_arg_ptr(va_list *args, t_finfo *fmt);
+size_t				ft_putfmtc(char c, t_finfo *fmt);
 
 int					skipstr(char **s1, char *s2);
 int					skipchr(char **s, char c);
