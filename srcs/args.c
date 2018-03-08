@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/07 22:19:43 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/08 11:36:46 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ char	*parse_arg(t_finfo *fmt, char **ptr)
 	tmp = *ptr;
 	if ((tmp = ft_strstredl(*ptr, "ll")))
 		fmt->modifier = MDF_LL;
-	else if ((fmt->modifier = ft_strchri(FORMATS, **ptr)) != -1)
-		(*ptr)++;
 	else if ((tmp = ft_strstredl(*ptr, "hh")))
 		fmt->modifier = MDF_HH;
+	else if ((fmt->modifier = ft_strchri(FORMATS, **ptr)) != -1)
+		(*ptr)++;
 	*ptr = tmp ? tmp : *ptr;
 	fmt->format = **ptr;
 	if (*ptr != '\0')
