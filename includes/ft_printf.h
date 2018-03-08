@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/08 10:52:28 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/08 11:36:04 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,8 @@ int					ft_prsnbr(char **s, int *dst);
 char				*ft_addchartostr(char *s, char c, int times, int dir);
 void				ft_putnchar(char c, int n);
 int					has_flag(t_finfo *f, char flag);
-int					ft_strchri(char *s, char c);
-int					to_little_endian(int c);
 int					get_mask(wint_t c, size_t *len);
 
-char	*ft_llitoa_tobase2(long long int n, char *base);
-char	*ft_ullitoa_tobase(unsigned long long int n, char *base);
 
 # define MAX(a, b) ((a) > (b) ? (a) : (b))
 
