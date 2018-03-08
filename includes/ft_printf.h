@@ -30,6 +30,8 @@
 # define HEX "0123456789abcdef"
 # define HEX_UPPER "0123456789ABCDEF"
 
+# define FLAGS "#0- +"
+
 # define THREE_BYTES_MASK (0xE08080)
 # define TWO_BYTES_MASK (0xC080)
 # define FOUR_BYTES_MASK (0xF0808080)
@@ -43,6 +45,8 @@ typedef struct		s_finfo
 	int				precision;
 	int				width;
 	int				padding;
+	char			flags[6];
+	char			padding_char;
 }					t_finfo;
 
 size_t					ft_printf(const char *fmt, ...);
@@ -60,6 +64,7 @@ int					ft_prsnbr(char **s, int *dst);
 char				*ft_toprecision(char *s, int n);
 char				*ft_addchartostr(char *s, char c, int times, int dir);
 void				ft_putnchar(char c, int n);
+int					has_flag(t_finfo *f, char flag);
 
 # define MAX(a, b) ((a) > (b) ? (a) : (b))
 

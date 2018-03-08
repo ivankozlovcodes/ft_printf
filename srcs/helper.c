@@ -99,3 +99,8 @@ void	ft_putnchar(char c, int n)
 	while (n--)
 		ft_putchar(c);
 }
+
+int		has_flag(t_finfo *f, char flag)
+{
+	return (ft_strchr(f->flags, flag) ? 1 : 0);
+}

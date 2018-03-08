@@ -20,10 +20,25 @@ int		parse_wildchar(int *dst, char **ptr)
 	return (1);
 }
 
+void	parse_flags(char **ptr, t_finfo *fmt)
+{
+	int		i;
+
+	i = 0;
+	while (ft_strchr(FLAGS, **ptr))
+	{
+		if (!ft_strchr(fmt->flags, **ptr))
+			fmt->flags[i++] = **ptr;
+		(*ptr)++;
+	}
+	fmt->flags[i] = '\0';
+}
+
 char	*parse_arg(t_finfo *fmt, char **ptr)
 {
 	char	*tmp;
 
+	parse_flags(ptr, fmt);
 	parse_wildchar(&(fmt->width), ptr);
 	if (fmt->width < 0)
 	{
