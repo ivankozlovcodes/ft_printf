@@ -85,7 +85,11 @@ size_t	ft_putfmtstr(t_finfo *fmt, char *s)
 	apply_flags(fmt, s, len);
 	len += ft_strlen(fmt->prefix);
 	if (fmt->padding_char == '0')
+	{
+		if (*s == '-')
+			ft_putchar(*s++);
 		ft_putstr(fmt->prefix);
+	}
 	if (fmt->padding > 0)
 		ft_putnchar(fmt->padding_char, fmt->width - len);
 	if (fmt->padding_char == ' ')
