@@ -17,8 +17,8 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 	if (fmt->format == 'd' || fmt->format == 'i')
 	{
 		if (has_flag(fmt, '+') && *output != '-')
-			ft_putchar('+');
-		if (has_flag(fmt, ' '))
+			fmt->prefix = "+";
+		if (has_flag(fmt, ' ') && *output != '-')
 			fmt->width = MAX(fmt->width, (int)output_len + 1);
 	}
 	if (has_flag(fmt, '-'))
