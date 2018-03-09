@@ -24,7 +24,7 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 	if (has_flag(fmt, '-'))
 		fmt->padding = -1;
 	fmt->padding_char = has_flag(fmt, '0') && !has_flag(fmt, '-') ? '0' : ' '; // has_flag('-') for "|%#-08x|" = |0x2a    |
-	if (has_flag(fmt, '#') && *output != '0') // ____ && //for "%#x", 0 => |0|
+	if (has_flag(fmt, '#') && (*output != '0' || fmt->precision != -1)) // ____ || (//for "%#x", 0 => |0| && //for  "|%#.x %#.0x|", 0, 0 = |0x0 0x0|
 	{
 		if (fmt->format == 'x')
 			fmt->prefix = "0x";
