@@ -35,6 +35,20 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 	}
 }
 
+void	apply_precision(t_finfo *fmt, char *output, size_t *len)
+{
+	int		p;
+
+	p = fmt->precision;
+	if (p == 0) //for  "|%#.x %#.0x|", 0, 0 = | |
+		output[p] = '\0';
+	if (ft_strchr("diouxX", fmt->format) && (int)*len < p)
+		ft_putnchar('0', p - *len);
+	else if (ft_strchr("sS", fmt->format) && (int)*len > p) 
+		output[p] = '\0';
+	*len = MAX(fmt->precision, (int)ft_strlen(output));
+}
+
 size_t	ft_putfmtc(char c, t_finfo *fmt)
 {
 	size_t		len;
