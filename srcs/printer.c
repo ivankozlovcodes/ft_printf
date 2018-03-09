@@ -166,6 +166,8 @@ size_t	print_arg_int(va_list *args, t_finfo *fmt)
 	fmt->base = DECIMAL;
 	if (m == MDF_LL)
 		n = (long long)va_arg(*args, long long int);
+	else if (m == MDF_L)
+		n = (long)va_arg(*args, long int);
 	else if (m == MDF_H)
 		n = (short)va_arg(*args, int);
 	else if (m == MDF_HH)
