@@ -19,6 +19,7 @@ int		main(void)
 	wchar_t		c;
 	long long	lln;
 	long long	llneg;
+	int			tmp;
 
 	n = 10;
 	lln = 9223372036854775807;
@@ -33,15 +34,15 @@ int		main(void)
 	void	*pa = (void *)&a;
 	// 101111111 11111111 11111111 11111111
 	// 110000000 00000000 00000000 00011010
-	printf("Test &a as long long int: %lld\n", *(long long *)pa);
-	ft_printf("Mine: %lld\n", *(long long *)pa);
-	printf("Negative as llx: %llx\n", -2147483648);
-	ft_printf("Mine llx: %llx\n", -2147483648);
-	printf("Negative as lx: %lx\n", -2147483648);
-	ft_printf("Mine lx: %lx\n", -2147483648);
-	printf("Negative as x: %x\n", -2147483648);
-	ft_printf("Mine x: %x\n", -2147483648);
-	// // int wchar = 35830;
+	// printf("Test &a as long long int: %lld\n", *(long long *)pa);
+	// ft_printf("Mine: %lld\n", *(long long *)pa);
+	// printf("Negative as llx: %llx\n", -2147483648);
+	// ft_printf("Mine llx: %llx\n", -2147483648);
+	// printf("Negative as lx: %lx\n", -2147483648);
+	// ft_printf("Mine lx: %lx\n", -2147483648);
+	// printf("Negative as x: %x\n", -2147483648);
+	// ft_printf("Mine x: %x\n", -2147483648);
+	// // // int wchar = 35830;
 	// write(1, &c, 4);
 	// // ft_printf("Hello world!\n");
 	// // ft_printf("Number: %d\n", n);
@@ -83,7 +84,11 @@ int		main(void)
 	// ft_printf("%lx\n", 4294967296);
 	// ft_printf("%hhX\n", 4294967296);
 	// ft_printf("%jx\n", 4294967296);
-	ft_printf("%jx\n", -4294967296);
+	// ft_printf("%jx\n", -4294967296);
+	// tmp = ft_printf("#x: %#x\n", 42);
+	// ft_printf("Adding length for #x with nl case: 9==%d\n", tmp);
+	// ft_printf("|    0x2a| == |%#8x|\n", 42);
+	ft_printf("%#x\n", 0);
 	printf("ORIGINAL\n ============================\n");
 	// printf("%d %d %d %d\n", sizeof(long int), sizeof(long), sizeof(long long int), sizeof(long long));
 	// printf("Itoa of 922337203854775807: |%s|\n", ft_llitoa_tobase2(922337203854775808, DECIMAL));
