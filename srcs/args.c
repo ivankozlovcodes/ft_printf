@@ -87,6 +87,7 @@ size_t	process_arg(va_list *args, char **ptr)
 	fmt.width = 0;
 	fmt.padding = 1;
 	fmt.precision = -1;
+	fmt.prefix = "\0";
 	if (**ptr == '%')
 	{
 		(*ptr)++;

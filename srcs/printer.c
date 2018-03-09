@@ -27,17 +27,20 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 	if (has_flag(fmt, '#'))
 	{
 		if (fmt->format == 'x')
-			ft_putstr("0x");
+			fmt->prefix = "0x";
 		if (fmt->format == 'X')
-			ft_putstr("0X");
+			fmt->prefix = "0X";
 		if (fmt->format == 'o')
-			ft_putchar('0');
+			fmt->prefix = "0";
 	}
 }
 
 size_t	ft_putfmtc(char c, t_finfo *fmt)
 {
-	apply_flags(fmt, &c, 1);
+	size_t		len;
+
+	len = 1;
+	apply_flags(fmt, &c, len);
 	if (fmt->padding > 0)
 		ft_putnchar(fmt->padding_char, fmt->width - 1);
 	ft_putchar(c);
@@ -54,8 +57,13 @@ size_t	ft_putfmtstr(t_finfo *fmt, char *s)
 		ft_putnchar('0', fmt->precision - len);
 	len = MAX(fmt->precision, (int)len);
 	apply_flags(fmt, s, len);
+	len += ft_strlen(fmt->prefix);
+	if (fmt->padding_char == '0')
+		ft_putstr(fmt->prefix);
 	if (fmt->padding > 0)
 		ft_putnchar(fmt->padding_char, fmt->width - len);
+	if (fmt->padding_char == ' ')
+		ft_putstr(fmt->prefix);
 	ft_putstr(s);
 	if (fmt->padding < 0)
 		ft_putnchar(fmt->padding_char, fmt->width - len);

@@ -48,6 +48,7 @@ typedef struct		s_finfo
 	int				padding;
 	char			flags[6];
 	char			padding_char;
+	char			*prefix;
 }					t_finfo;
 
 size_t				ft_printf(const char *fmt, ...);
