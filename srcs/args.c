@@ -6,16 +6,21 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/08 11:36:46 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/08 18:17:47 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		parse_wildchar(int *dst, char **ptr)
+int		parse_wildchar(va_list *args, int *dst, char **ptr)
 {
 	// todo: handle *
-	if (!ft_prsnbr(ptr, dst))
+	if (**ptr == '*')
+	{
+		*dst = va_arg(*args, int);
+		(*ptr)++;
+	}
+	else if (!ft_prsnbr(ptr, dst))
 		return (0);
 	return (1);
 }
@@ -34,19 +39,19 @@ void	parse_flags(char **ptr, t_finfo *fmt)
 	fmt->flags[i] = '\0';
 }
 
-char	*parse_arg(t_finfo *fmt, char **ptr)
+char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 {
 	char	*tmp;
 
 	parse_flags(ptr, fmt);
-	parse_wildchar(&(fmt->width), ptr);
+	parse_wildchar(args, &(fmt->width), ptr);
 	if (fmt->width < 0)
 	{
 		fmt->width = -fmt->width;
 		fmt->padding = -1;
 	}
 	if (skipchr(ptr, '.'))
-		parse_wildchar(&(fmt->precision), ptr);
+		parse_wildchar(args, &(fmt->precision), ptr);
 	tmp = *ptr;
 	if ((tmp = ft_strstredl(*ptr, "ll")))
 		fmt->modifier = MDF_LL;
@@ -93,7 +98,7 @@ size_t	process_arg(va_list *args, char **ptr)
 		(*ptr)++;
 		if (*ptr != '\0')
 		{
-			*ptr = parse_arg(&fmt, ptr);
+			*ptr = parse_arg(args, &fmt, ptr);
 			return (print_arg(args, &fmt));
 		}
 	}
