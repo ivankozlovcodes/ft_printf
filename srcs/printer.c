@@ -77,9 +77,10 @@ size_t	ft_putfmtstr(t_finfo *fmt, char *s)
 {
 	size_t	len;
 
-	if ((int)(len = ft_strlen(s)) < fmt->precision)
-		ft_putnchar('0', fmt->precision - len);
-	len = MAX(fmt->precision, (int)len);
+	if (!s && ft_strchr("sS", fmt->format))
+		s = "(null)";
+	len = ft_strlen(s);
+	apply_precision(fmt, s, &len);
 	apply_flags(fmt, s, len);
 	len += ft_strlen(fmt->prefix);
 	if (fmt->padding_char == '0')
