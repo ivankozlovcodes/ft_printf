@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/08 13:54:17 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/08 21:42:03 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,19 @@ int		main(void)
 	// tmp = ft_printf("#x: %#x\n", 42);
 	// ft_printf("Adding length for #x with nl case: 9==%d\n", tmp);
 	// ft_printf("|    0x2a| == |%#8x|\n", 42);
-	ft_printf("%#x\n", 0);
-	printf("ORIGINAL\n ============================\n");
+	// ft_printf("|0| = |%#x|\n", 0);
+	// ft_printf("|0x2a    | = |%#-08x|\n", 42);
+	// ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
+	// ft_printf("@moulitest: |%.x %.0x|\n", 0, 0);
+	// ft_printf("@moulitest: |%5.x %5.0x|\n", 0, 0);
+	// ft_printf("%d %s \n", NULL, NULL, NULL);
+	// ft_printf("%d", -1);
+	// ft_printf("@moulitest: %.10d", -42);
+	ft_printf("%10.5d", 4242);
+	printf("\n\nORIGINAL\n ============================\n");
 	// printf("%d %d %d %d\n", sizeof(long int), sizeof(long), sizeof(long long int), sizeof(long long));
 	// printf("Itoa of 922337203854775807: |%s|\n", ft_llitoa_tobase2(922337203854775808, DECIMAL));
+	printf("%d %3s %S\n", NULL, NULL, NULL);
 	printf("Itoa of 18446744073709551615: |%s|\n", ft_ullitoa_tobase(18446744073709551615, DECIMAL));
 	printf("llneg number: %lld\n", llneg);
 	printf("llneg number octal: %llo\n", llneg);
