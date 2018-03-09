@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/08 13:51:41 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/08 21:45:04 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,34 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 	}
 }
 
-void	apply_precision(t_finfo *fmt, char *output, size_t *len)
+void	apply_precision(t_finfo *fmt, char **output, size_t *len)
 {
 	int		p;
+	int		printed;
 
 	p = fmt->precision;
+	printed = 0;
 	if (p == -1)
 		return ;
 	if (p == 0) //for  "|%#.x %#.0x|", 0, 0 = | |
 	{
-		output[p] = '\0';
+		(*output)[p] = '\0';
 		*len = 0;
 	}
 	if (ft_strchr("diouxX", fmt->format) && (int)*len < p)
 	{
-		ft_putnchar('0', p - *len);
-		*len = p;
+		if (**output == '-')
+		{
+			ft_putchar(**output);
+			(*output)++;
+			printed = 1;
+		}
+		ft_putnchar('0', p - *len + printed);
+		*len = p + printed;
 	}
-	else if (ft_strchr("sS", fmt->format) && (int)*len > p) 
+	else if (ft_strchr("sS", fmt->format) && (int)*len > p)
 	{
-		output[p] = '\0';
+		(*output)[p] = '\0';
 		*len = p;
 	}
 }
@@ -81,7 +89,7 @@ size_t	ft_putfmtstr(t_finfo *fmt, char *s)
 	if (!s && ft_strchr("sS", fmt->format))
 		s = "(null)";
 	len = ft_strlen(s);
-	apply_precision(fmt, s, &len);
+	apply_precision(fmt, &s, &len);
 	apply_flags(fmt, s, len);
 	len += ft_strlen(fmt->prefix);
 	if (fmt->padding_char == '0')
@@ -116,19 +124,6 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 		s = (char *)p;
 	else
 		s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
-	// if (fmt->modifier == MDF_LL)
-	// 	s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
-	// else
-	// 	if (f == 'd' || f == 'i')
-	// 		s = ft_llitoa_tobase(*(int *)p, DECIMAL);
-	// 	else if (f == 'u')
-	// 		s = ft_ullitoa_tobase(*(unsigned int *)p, DECIMAL);
-	// 	else if (ft_strchr("oxX", f))
-	// 		s = ft_ullitoa_tobase(*(unsigned long long int *)p, fmt->base);
-	// 	else if (f == 'c')
-	// 		return (ft_putfmtc(*(char *)p, fmt));
-	// 	else if (f == 's')
-	// 		s = (char *)p;
 	return (ft_putfmtstr(fmt, s));
 }
 
