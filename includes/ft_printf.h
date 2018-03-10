@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/08 11:36:04 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/09 22:43:10 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,15 @@ size_t				process_arg(va_list *args, char **ptr);
 
 size_t				print_arg_int(va_list *args, t_finfo *fmt);
 size_t				print_arg_uint(va_list *args, t_finfo *fmt);
+size_t				print_arg_lint(va_list *args, t_finfo *fmt);
 size_t				print_arg_char(va_list *args, t_finfo *fmt);
 size_t				print_arg_ptr(va_list *args, t_finfo *fmt);
+
 size_t				ft_putfmtc(char c, t_finfo *fmt);
+size_t				ft_print_wchar(wint_t c);
+size_t				ft_putfmt(void *p, t_finfo *fmt);
+size_t				ft_putfmtnbr(t_finfo *fmt, char *s);
+size_t				ft_putfmtstr(t_finfo *fmt, char *s);
 
 int					skipstr(char **s1, char *s2);
 int					skipchr(char **s, char c);
@@ -68,7 +74,6 @@ char				*ft_addchartostr(char *s, char c, int times, int dir);
 void				ft_putnchar(char c, int n);
 int					has_flag(t_finfo *f, char flag);
 int					get_mask(wint_t c, size_t *len);
-
 
 # define MAX(a, b) ((a) > (b) ? (a) : (b))
 
