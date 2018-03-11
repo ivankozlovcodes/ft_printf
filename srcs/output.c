@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/09 22:51:53 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 16:30:02 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,19 +124,22 @@ size_t	ft_putfmtnbr(t_finfo *fmt, char *s)
 	size_t	p_len;
 	int		padding_size;
 
-	if (*s == '-')
-	{
+	if (fmt->precision == 0 && *s == '0')
+		*s = '\0';
+	if (*s == '-' && s++)
 		fmt->prefix = "-";
-		s++;
-	}
-	p_len = ft_strlen(fmt->prefix);
 	len = ft_strlen(s);
-	apply_flags(fmt, s, len + p_len);
+	apply_flags(fmt, s, len);
+	p_len = ft_strlen(fmt->prefix);
 	padding_size = fmt->width - MAX((int)len, fmt->precision) - p_len;
+	if (fmt->padding_char == '0')
+		ft_putstr(fmt->prefix);
 	if (fmt->padding > 0)
 		ft_putnchar(fmt->padding_char, padding_size);
-	ft_putstr(fmt->prefix);
+	if (fmt->padding_char == ' ')
+		ft_putstr(fmt->prefix);
 	ft_putnchar('0', fmt->precision - len);
+	len = MAX(fmt->precision, (int)len);
 	ft_putstr(s);
 	if (fmt->padding < 0)
 		ft_putnchar(fmt->padding_char, padding_size);
