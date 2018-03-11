@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 17:24:37 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/09 21:37:43 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 12:31:00 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int		ft_prsnbr(char **s, int *dst)
 
 void	ft_putnchar(char c, int n)
 {
-	ft_putstr(ft_strnewc(n, c));
+	if (n > 0)
+		ft_putstr(ft_strnewc(n, c));
 }
 
 int		has_flag(t_finfo *f, char flag)
