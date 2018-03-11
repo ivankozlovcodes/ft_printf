@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 21:34:18 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 21:38:10 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ size_t	print_arg_uint(va_list *args, t_finfo *fmt)
 		fmt->base = HEX;
 	else if (fmt->format == 'X')
 		fmt->base = HEX_UPPER;
-	if (fmt->modifier == MDF_LL)
+	if (fmt->modifier == MDF_LL || fmt->format == 'U')
 		n = (unsigned long long)va_arg(*args, unsigned long long int);
 	else if (fmt->modifier == MDF_L || fmt->format == 'O')
 		n = va_arg(*args, unsigned long int);
