@@ -34,7 +34,7 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 			fmt->prefix = "0x";
 		if (fmt->format == 'X')
 			fmt->prefix = "0X";
-		if (fmt->format == 'o')
+		if (ft_strchr("oO", fmt->format))
 			fmt->prefix = "0";
 	}
 	if (fmt->format == 'p')
