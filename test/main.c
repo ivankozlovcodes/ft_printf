@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 16:27:33 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 18:21:03 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,16 @@ int		main(void)
 	lln = 9223372036854775807;
 	llneg = -9223372036854775807;
 	printf("===========INFO===========\n");
-	printf("Atoi stupid %d\n", ft_atoi("123 %d\n"));
-	// printf("wchar_t size is %zu\n", sizeof(wchar_t));
 	c = L'诶';
 	printf("Wchar (a): %lc\n", c);
-	printf("Wchar as char (a): %d: %c\n", c, c);
+	printf("Wchar as char %d: %c\n", c, c);
 	int		a = 2147483647;
-	void	*pa = (void *)&a;
-	// 101111111 11111111 11111111 11111111
-	// 110000000 00000000 00000000 00011010
-	// printf("Test &a as long long int: %lld\n", *(long long *)pa);
-	// ft_printf("Mine: %lld\n", *(long long *)pa);
-	// printf("Negative as llx: %llx\n", -2147483648);
-	// ft_printf("Mine llx: %llx\n", -2147483648);
-	// printf("Negative as lx: %lx\n", -2147483648);
-	// ft_printf("Mine lx: %lx\n", -2147483648);
-	// printf("Negative as x: %x\n", -2147483648);
-	// ft_printf("Mine x: %x\n", -2147483648);
-	// // // int wchar = 35830;
-	// write(1, &c, 4);
-	// // ft_printf("Hello world!\n");
-	// // ft_printf("Number: %d\n", n);
-	// ft_printf("ll number: %llu\n", lln);
-	// ft_printf("ll number octal: %llo\n", lln);
-	// ft_printf("ll number octal: %llx\n", lln);
+	int		*p = &a;
+	int		**p2 = &p;
+	printf("%p\n", p);
+	printf("%p\n", p2);
+	// ft_printf("%p\n", p);
+	// ft_printf("%p\n", p2);
 	ft_printf("MINE ===============================\n");
 	// ft_printf("ll number: %o\n", n);
 	// ft_printf("o number: %llo\n", n);
@@ -99,13 +85,16 @@ int		main(void)
 	// ft_printf("%10.5d", 4242);
 	// ft_printf("|%10.5d|\n", -4242);
 	// ft_printf("%%");
-	// ft_printf("%+d", 42);
-	ft_printf("@moulitest: %#.x %#.0x", 0, 0);
-	ft_printf("| 00| = |%03.2d|\n", 0);
-	ft_printf("|+0042| = |%0+5d|\n", 42);
-	ft_printf("| 42| = |% d|", 42);
-	printf("\n");
-	ft_printf("|-1| = |%d|", -1);
+	// // ft_printf("%+d", 42);
+	// ft_printf("@moulitest: %#.x %#.0x", 0, 0);
+	// ft_printf("| 00| = |%03.2d|\n", 0);
+	// ft_printf("|+0042| = |%0+5d|\n", 42);
+	// ft_printf("| 42| = |% d|", 42);
+	// printf("\n");
+	// ft_printf("|-1| = |%d|", -1);
+	printf("Fixing Moulinete\n ============================\n");
+	ft_printf("%zO, %zO\n", 0, USHRT_MAX);
+	printf("%zO, %zO\n", 0, USHRT_MAX);
 	printf("\n\nORIGINAL\n ============================\n");
 	// printf("%d %d %d %d\n", sizeof(long int), sizeof(long), sizeof(long long int), sizeof(long long));
 	// printf("Itoa of 922337203854775807: |%s|\n", ft_llitoa_tobase2(922337203854775808, DECIMAL));
