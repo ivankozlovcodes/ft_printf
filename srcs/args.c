@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 17:59:25 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 20:10:27 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 	if (skipchr(ptr, '.'))
 		parse_wildchar(args, &(fmt->precision), ptr);
 	tmp = *ptr;
-	if ((tmp = ft_strstredl(*ptr, "ll")))
+	if ((tmp = ft_strstrend(*ptr, "ll")))
 		fmt->modifier = MDF_LL;
-	else if ((tmp = ft_strstredl(*ptr, "hh")))
+	else if ((tmp = ft_strstrend(*ptr, "hh")))
 		fmt->modifier = MDF_HH;
 	else if ((fmt->modifier = ft_strchri(FORMATS, **ptr)) != -1)
 		(*ptr)++;
@@ -73,7 +73,7 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 	f = fmt->format;
 	if (f == 'd' || f == 'i')
 		return (print_arg_int(args, fmt));
-	else if (ft_strchr("ouxX", f) != NULL)
+	else if (ft_strchr("oOuxX", f) != NULL)
 		return (print_arg_uint(args, fmt));
 	else if (f == 'c' || f == 'C')
 		return (print_arg_char(args, fmt));
