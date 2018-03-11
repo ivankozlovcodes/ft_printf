@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/09 22:43:52 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 20:06:21 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ size_t	print_arg_uint(va_list *args, t_finfo *fmt)
 	unsigned long long int	n;
 
 	fmt->base = DECIMAL;
-	if (fmt->format == 'o')
+	if (fmt->format == 'o'
+		|| fmt->format == 'O')
 		fmt->base = OCTAL;
 	else if (fmt->format == 'x')
 		fmt->base = HEX;
