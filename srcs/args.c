@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 20:10:27 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 20:17:43 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 	char	f;
 
 	f = fmt->format;
-	if (f == 'd' || f == 'i')
+	if (ft_strchr("diD", f))
 		return (print_arg_int(args, fmt));
 	else if (ft_strchr("oOuxX", f) != NULL)
 		return (print_arg_uint(args, fmt));

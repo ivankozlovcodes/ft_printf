@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 18:08:05 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 21:10:13 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,10 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 	f = fmt->format;
 	s = NULL;
 	if (ft_strchr("ouxX", f))
+	{
 		s = ft_ullitoa_tobase(*(unsigned long long int *)p, fmt->base);
+		return (ft_putfmtnbr(fmt, s));
+	}
 	else if (f == 'c')
 		return (ft_putfmtc(*(char *)p, fmt));
 	else if (f == 's')
