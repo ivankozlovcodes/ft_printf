@@ -67,7 +67,8 @@ char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 		(*ptr)++;
 	*ptr = tmp ? tmp : *ptr;
 	fmt->format = **ptr;
-	if (!ft_strchr(FORMATS, fmt->format))
+	if (!ft_strchr(FORMATS, fmt->format) && !ft_isalpha(fmt->format)
+		&& ft_isprint(fmt->format))
 		errno = EILSEQ;
 	if (*ptr != '\0')
 		(*ptr)++;
