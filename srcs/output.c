@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 21:40:02 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 22:38:38 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 		fmt->padding_char = ' ';
 	else
 		fmt->padding_char = '0';
-	if (has_flag(fmt, '#') && ((*output != '0' && fmt->precision != 0) //for "%#x", 0 => |0|
-		|| (fmt->format == 'o')))// for "%#.o", 0 = |0|
+	if (has_flag(fmt, '#') && *output != '0' && fmt->precision != 0)
 	{
 		if (fmt->format == 'x')
 			fmt->prefix = "0x";
@@ -127,7 +126,9 @@ size_t	ft_putfmtnbr(t_finfo *fmt, char *s)
 	int		padding_size;
 
 	if (fmt->precision == 0 && *s == '0')
-		*s = '\0';
+		if ((!ft_strchr("oO", fmt->format))
+			|| (ft_strchr("oO", fmt->format) && !has_flag(fmt, '#')))
+			*s = '\0';
 	if (*s == '-' && s++)
 		fmt->prefix = "-";
 	len = ft_strlen(s);
