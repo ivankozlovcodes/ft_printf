@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 13:26:44 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 14:50:06 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,12 @@ char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 		fmt->modifier = MDF_LL;
 	else if ((tmp = ft_strstrend(*ptr, "hh")))
 		fmt->modifier = MDF_HH;
-	else if ((fmt->modifier = ft_strchri(FORMATS, **ptr)) != -1)
+	else if ((fmt->modifier = ft_strchri(MODIFIERS, **ptr)) != -1)
 		(*ptr)++;
 	*ptr = tmp ? tmp : *ptr;
 	fmt->format = **ptr;
+	if (!ft_strchr(FORMATS, fmt->format))
+		errno = EILSEQ;
 	if (*ptr != '\0')
 		(*ptr)++;
 	return (*ptr);

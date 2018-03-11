@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 14:47:00 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 14:48:29 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <wchar.h>
+# include <errno.h>
 
 # define MDF_L (0)
 # define MDF_H (1)
@@ -31,7 +32,8 @@
 # define HEX_UPPER "0123456789ABCDEF"
 
 # define FLAGS "#0- +"
-# define FORMATS "lhjz"
+# define MODIFIERS "lhjz"
+# define FORMATS "sSpdDioOuUxXcC%"
 
 # define THREE_BYTES_MASK (0xE08080)
 # define TWO_BYTES_MASK (0xC080)
