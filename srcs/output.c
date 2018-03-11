@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 21:10:13 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 21:25:41 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 	if (has_flag(fmt, '-'))
 		fmt->padding = -1;
 	if (has_flag(fmt, '-') || !has_flag(fmt, '0')
-		|| ((ft_strchr("di", fmt->format) && fmt->precision != -1)))
+		|| ((ft_strchr("di", fmt->format) && fmt->precision >= 0)))
 		fmt->padding_char = ' ';
 	else
 		fmt->padding_char = '0';
