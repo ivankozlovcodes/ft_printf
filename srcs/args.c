@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 21:17:38 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 21:30:04 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 		fmt->padding = -1;
 	}
 	if (skipchr(ptr, '.'))
+	{
+		fmt->precision = 0;
 		parse_wildchar(args, &(fmt->precision), ptr);
+	}
 	tmp = *ptr;
 	if ((tmp = ft_strstrend(*ptr, "ll")))
 		fmt->modifier = MDF_LL;
