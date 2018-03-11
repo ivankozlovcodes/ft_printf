@@ -141,7 +141,7 @@ size_t	ft_putfmtnbr(t_finfo *fmt, char *s)
 		ft_putnchar(fmt->padding_char, padding_size);
 	if (fmt->padding_char == ' ')
 		ft_putstr(fmt->prefix);
-	ft_putnchar('0', fmt->precision - len - p_len);
+	ft_putnchar('0', fmt->precision - len);
 	len = MAX(fmt->precision, (int)len);
 	ft_putstr(s);
 	if (fmt->padding < 0)
