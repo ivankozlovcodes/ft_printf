@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 20:17:43 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 21:17:38 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int		parse_wildchar(va_list *args, int *dst, char **ptr)
 {
-	// todo: handle *
+	int		res;
+
 	if (**ptr == '*')
 	{
 		*dst = va_arg(*args, int);
@@ -22,6 +23,8 @@ int		parse_wildchar(va_list *args, int *dst, char **ptr)
 	}
 	else if (!ft_prsnbr(ptr, dst))
 		return (0);
+	if ((parse_wildchar(args, &res, ptr)))
+		*dst = res;
 	return (1);
 }
 

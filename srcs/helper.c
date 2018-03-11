@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 17:24:37 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 12:31:00 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 21:17:11 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		ft_prsnbr(char **s, int *dst)
 		i++;
 	while (ft_isdigit((*s)[i]))
 		i++;
-	if (**s == '-' && i == 1)
+	if ((**s == '-' && i == 1) || i == 0)
 		return (0);
 	nbr = (char *)malloc(sizeof(char) * (i + 1));
 	ft_strncpy(nbr, *s, i);
