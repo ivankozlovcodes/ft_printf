@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/09 22:33:11 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 16:27:33 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,15 @@ int		main(void)
 	// ft_printf("%d", -1);
 	// ft_printf("@moulitest: %.10d", -42);
 	// ft_printf("%10.5d", 4242);
-	ft_printf("|%10.5d|\n", -4242);
-	printf("|%10.5d|\n", -4242);
-	printf("|%10s|\n", "string");
-	printf("|%10.5s|\n", "string");
+	// ft_printf("|%10.5d|\n", -4242);
+	// ft_printf("%%");
+	// ft_printf("%+d", 42);
+	ft_printf("@moulitest: %#.x %#.0x", 0, 0);
+	ft_printf("| 00| = |%03.2d|\n", 0);
+	ft_printf("|+0042| = |%0+5d|\n", 42);
+	ft_printf("| 42| = |% d|", 42);
+	printf("\n");
+	ft_printf("|-1| = |%d|", -1);
 	printf("\n\nORIGINAL\n ============================\n");
 	// printf("%d %d %d %d\n", sizeof(long int), sizeof(long), sizeof(long long int), sizeof(long long));
 	// printf("Itoa of 922337203854775807: |%s|\n", ft_llitoa_tobase2(922337203854775808, DECIMAL));
