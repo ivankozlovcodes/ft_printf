@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 22:38:38 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 13:18:27 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ size_t	ft_putfmtstr(t_finfo *fmt, char *s)
 	size_t	len;
 
 	if (!s && ft_strchr("sS", fmt->format))
-		s = "(null)";
+		s = ft_strdup("(null)");
 	len = ft_strlen(s);
 	apply_precision(fmt, &s, &len);
 	apply_flags(fmt, s, len);
