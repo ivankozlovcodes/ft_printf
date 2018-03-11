@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 16:30:02 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 18:08:05 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 		if (fmt->format == 'o')
 			fmt->prefix = "0";
 	}
+	if (fmt->format == 'p')
+		fmt->prefix = "0x";
 }
 
 void	apply_precision(t_finfo *fmt, char **output, size_t *len)
@@ -159,6 +161,8 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 		return (ft_putfmtc(*(char *)p, fmt));
 	else if (f == 's')
 		s = (char *)p;
+	else if (f == 'p')
+		s = ft_ullitoa_tobase((unsigned long)p, HEX);
 	else
 	{
 		s = ft_llitoa_tobase(*(long long int *)p, fmt->base);

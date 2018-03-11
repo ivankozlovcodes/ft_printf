@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/09 20:35:32 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/10 17:59:25 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 		return (print_arg_char(args, fmt));
 	else if (f == 'U')
 		return (print_arg_lint(args, fmt));
-	else if (f == 's' || f == 'S')
+	else if (ft_strchr("psS", f))
 		return (print_arg_ptr(args, fmt));
 	else
 		return (ft_putfmtc(f, fmt));
