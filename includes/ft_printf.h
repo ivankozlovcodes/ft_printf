@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/09 22:43:10 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 14:47:00 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "libft.h"
 # include <unistd.h>
 # include <stdarg.h>
-#include <wchar.h>
+# include <wchar.h>
 
 # define MDF_L (0)
 # define MDF_H (1)
