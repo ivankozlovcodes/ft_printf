@@ -28,13 +28,14 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 		fmt->padding_char = ' ';
 	else
 		fmt->padding_char = '0';
-	if (has_flag(fmt, '#') && *output != '0' && fmt->precision != 0)
+	if (has_flag(fmt, '#') && *output != 0 && *output != '0')
 	{
 		if (fmt->format == 'x')
 			fmt->prefix = "0x";
 		if (fmt->format == 'X')
 			fmt->prefix = "0X";
-		if (ft_strchr("oO", fmt->format))
+		if (ft_strchr("oO", fmt->format)
+			&& fmt->precision < (int)output_len + 1)
 			fmt->prefix = "0";
 	}
 	if (fmt->format == 'p')
