@@ -6,84 +6,43 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 17:26:48 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:34:06 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
-{
-	if ((fmt->format == 'd' || fmt->format == 'i') && !fmt->prefix[0])
-		if (has_flag(fmt, '+'))
-			fmt->prefix = "+";
-	if (has_flag(fmt, '-'))
-		fmt->padding = -1;
-	if (has_flag(fmt, '-') || !has_flag(fmt, '0')
-		|| ((ft_strchr("di", fmt->format) && fmt->precision >= 0)))
-		fmt->padding_char = ' ';
-	else
-		fmt->padding_char = '0';
-	if (has_flag(fmt, '#') && *output != 0 && *output != '0')
-	{
-		if (fmt->format == 'x')
-			fmt->prefix = "0x";
-		if (fmt->format == 'X')
-			fmt->prefix = "0X";
-		if (ft_strchr("oO", fmt->format)
-			&& fmt->precision < (int)output_len + 1)
-			fmt->prefix = "0";
-	}
-	if (fmt->format == 'p')
-		fmt->prefix = "0x";
-}
+// void	apply_precision(t_finfo *fmt, char **output, size_t *len)
+// {
+// 	int		p;
+// 	int		printed;
 
-int		apply_space_flag(t_finfo *fmt)
-{
-	char	f;
-	int		printed;
-
-	printed = 0;
-	f = fmt->format;
-	if (ft_strchr("di", f) && has_flag(fmt, ' ') && !*fmt->prefix)
-	{
-		fmt->width--;
-		ft_putchar(' ');
-	}
-	return (printed);
-}
-
-void	apply_precision(t_finfo *fmt, char **output, size_t *len)
-{
-	int		p;
-	int		printed;
-
-	p = fmt->precision;
-	printed = 0;
-	if (p == -1)
-		return ;
-	if (p == 0) //for  "|%#.x %#.0x|", 0, 0 = | |
-	{
-		(*output)[p] = '\0';
-		*len = 0;
-	}
-	if (ft_strchr("diouxX", fmt->format) && (int)*len < p)
-	{
-		if (**output == '-')
-		{
-			ft_putchar(**output);
-			(*output)++;
-			printed = 1;
-		}
-		ft_putnchar('0', p - *len + printed);
-		*len = p + printed;
-	}
-	else if (ft_strchr("sS", fmt->format) && (int)*len > p)
-	{
-		(*output)[p] = '\0';
-		*len = p;
-	}
-}
+// 	p = fmt->precision;
+// 	printed = 0;
+// 	if (p == -1)
+// 		return ;
+// 	if (p == 0) //for  "|%#.x %#.0x|", 0, 0 = | |
+// 	{
+// 		(*output)[p] = '\0';
+// 		*len = 0;
+// 	}
+// 	if (ft_strchr("diouxX", fmt->format) && (int)*len < p)
+// 	{
+// 		if (**output == '-')
+// 		{
+// 			ft_putchar(**output);
+// 			(*output)++;
+// 			printed = 1;
+// 		}
+// 		ft_putnchar('0', p - *len + printed);
+// 		*len = p + printed;
+// 	}
+// 	else if (ft_strchr("sS", fmt->format) && (int)*len > p)
+// 	{
+// 		(*output)[p] = '\0';
+// 		*len = p;
+// 	}
+// }
 
 size_t	ft_putfmtc(char c, t_finfo *fmt)
 {
@@ -126,26 +85,18 @@ size_t	ft_putfmtstr(t_finfo *fmt, char *s)
 	return (len);
 }
 
-// size_t	ft_putfmthex(t_finfo *fmt, char *s)
-// {
-// 	return (0);
-// }
-
 size_t	ft_putfmtnbr(t_finfo *fmt, char *s)
 {
 	size_t	len;
 	size_t	p_len;
 	int		padding_size;
 
-	if (fmt->precision == 0 && *s == '0')
-		if ((!ft_strchr("oO", fmt->format))
-			|| (ft_strchr("oO", fmt->format) && !has_flag(fmt, '#')))
-			*s = '\0';
+	len = 0;
 	if (*s == '-' && s++)
 		fmt->prefix = "-";
 	len = ft_strlen(s);
-	apply_flags(fmt, s, len);
-	len += apply_space_flag(fmt);
+	len += apply_precision_nbr(fmt, s, len);
+	len += apply_flags(fmt, s, len);
 	p_len = ft_strlen(fmt->prefix);
 	padding_size = fmt->width - MAX((int)len, fmt->precision) - p_len;
 	if (fmt->padding_char == '0')
@@ -154,8 +105,7 @@ size_t	ft_putfmtnbr(t_finfo *fmt, char *s)
 		ft_putnchar(fmt->padding_char, padding_size);
 	if (fmt->padding_char == ' ')
 		ft_putstr(fmt->prefix);
-	ft_putnchar('0', fmt->precision - len);
-	len = MAX(fmt->precision, (int)len);
+	ft_putstr(fmt->p_string);
 	ft_putstr(s);
 	if (fmt->padding < 0)
 		ft_putnchar(fmt->padding_char, padding_size);
