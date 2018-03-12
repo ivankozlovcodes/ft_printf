@@ -6,43 +6,11 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 19:34:06 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:39:02 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-// void	apply_precision(t_finfo *fmt, char **output, size_t *len)
-// {
-// 	int		p;
-// 	int		printed;
-
-// 	p = fmt->precision;
-// 	printed = 0;
-// 	if (p == -1)
-// 		return ;
-// 	if (p == 0) //for  "|%#.x %#.0x|", 0, 0 = | |
-// 	{
-// 		(*output)[p] = '\0';
-// 		*len = 0;
-// 	}
-// 	if (ft_strchr("diouxX", fmt->format) && (int)*len < p)
-// 	{
-// 		if (**output == '-')
-// 		{
-// 			ft_putchar(**output);
-// 			(*output)++;
-// 			printed = 1;
-// 		}
-// 		ft_putnchar('0', p - *len + printed);
-// 		*len = p + printed;
-// 	}
-// 	else if (ft_strchr("sS", fmt->format) && (int)*len > p)
-// 	{
-// 		(*output)[p] = '\0';
-// 		*len = p;
-// 	}
-// }
 
 size_t	ft_putfmtc(char c, t_finfo *fmt)
 {

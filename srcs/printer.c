@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 13:07:42 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:38:46 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ size_t	print_arg_char(va_list *args, t_finfo *fmt)
 size_t	print_arg_lint(va_list *args, t_finfo *fmt)
 {
 	long int	n;
-	
+
 	fmt->base = DECIMAL;
 	n = va_arg(*args, long int);
 	return (ft_putfmt((void *)&n, fmt));

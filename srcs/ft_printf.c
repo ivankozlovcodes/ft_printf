@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:04:31 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 14:57:20 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:42:36 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ size_t	process(va_list *args, const char *fmt)
 	ptr = (char *)fmt;
 	start = ptr;
 	len = 0;
-	errno = 0;
 	while (*ptr)
 	{
 		if (*ptr == '%')
@@ -48,6 +47,7 @@ size_t	ft_printf(const char *fmt, ...)
 	int		len;
 
 	len = 0;
+	errno = 0;
 	if (fmt)
 	{
 		va_start(args, fmt);
