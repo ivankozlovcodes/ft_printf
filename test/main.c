@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/10 18:21:03 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 18:18:53 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,23 @@ int		main(void)
 	long long	lln;
 	long long	llneg;
 	int			tmp;
+	int			localerr;
 
 	n = 10;
 	lln = 9223372036854775807;
 	llneg = -9223372036854775807;
 	printf("===========INFO===========\n");
 	c = L'诶';
-	printf("Wchar (a): %lc\n", c);
-	printf("Wchar as char %d: %c\n", c, c);
+	// printf("Wchar (a): %lc\n", c);
+	// printf("Wchar as char %d: %c\n", c, c);
 	int		a = 2147483647;
 	int		*p = &a;
 	int		**p2 = &p;
-	printf("%p\n", p);
-	printf("%p\n", p2);
+	// printf("%p\n", p);
+	// printf("%p\n", p2);
 	// ft_printf("%p\n", p);
 	// ft_printf("%p\n", p2);
-	ft_printf("MINE ===============================\n");
+	// ft_printf("MINE ===============================\n");
 	// ft_printf("ll number: %o\n", n);
 	// ft_printf("o number: %llo\n", n);
 	// ft_printf("llneg number: %lld\n", llneg);
@@ -93,9 +94,79 @@ int		main(void)
 	// printf("\n");
 	// ft_printf("|-1| = |%d|", -1);
 	printf("Fixing Moulinete\n ============================\n");
-	ft_printf("%zO, %zO\n", 0, USHRT_MAX);
-	printf("%zO, %zO\n", 0, USHRT_MAX);
-	printf("\n\nORIGINAL\n ============================\n");
+	// ft_printf("%zO, %zO\n", 0, USHRT_MAX);
+	// printf("%zO, %zO\n", 0, USHRT_MAX);
+	// ft_printf("%jO, %jO\n", 0, USHRT_MAX);
+	// printf("%jO, %jO\n", 0, USHRT_MAX);
+	// ft_printf("%zD, %zD\n", 0, USHRT_MAX);
+	// printf("%zD, %zD\n", 0, USHRT_MAX);
+	// ft_printf("%15.4u\n", 42);
+	// printf("%15.4u\n", 42);
+	// ft_printf("{%3*d}\n", 0, 0);
+	// printf("{%3*d}\n", 0, 0);
+	// ft_printf("%.d, %.0d\n", 0, 0);
+	// printf("%.d, %.0d\n", 0, 0);
+	// ft_printf("{%05.*d}\n", -15, 42);
+	// printf("{%05.*d}\n", -15, 42);
+	// ft_printf("%O\n", LONG_MAX);
+	// printf("%O\n", LONG_MAX);
+	// ft_printf("%U\n", ULONG_MAX);
+	// printf("%U\n", ULONG_MAX);
+	// ft_printf("|.o, .0o| %.o, %.0o\n", 0, 0);
+	// printf("%.o, %.0o\n", 0, 0);
+	// ft_printf("%.x, %.0x\n", 0, 0);
+	// printf("%.x, %.0x\n", 0, 0);
+	// ft_printf("|#.x, #.0x| %#.x, %#.0x\n", 0, 0);
+	// printf("%#.x, %#.0x\n", 0, 0);
+	// ft_printf("%#o\n", 0);
+	// printf("%#o\n", 0);
+	// ft_printf("%#.o\n", 0);
+	// printf("%#.o\n", 0);
+	// ft_printf("%hhu, %hhu\n", 0, UCHAR_MAX + 42);
+	// printf("%hhu, %hhu\n", 0, UCHAR_MAX + 42);
+	// printf("%.*s\n", -1, NULL);
+	// ft_printf("%.*s\n", -1, "asd");
+	// ft_printf("%hhD, %hhD\n", 0, USHRT_MAX);
+	// printf("%hhD, %hhD\n", 0, USHRT_MAX);
+	// ft_printf("%#O\n", 1);
+	// printf("%#O\n", 1);
+	// ft_printf("%#.3o\n", 1);
+	// printf("%#.3o\n", 1);
+	// printf("%15.4d\n", -42);
+	// ft_printf("%15.4d\n", -42);
+	// ft_printf("{%10R}\n");
+	// printf("{%10R}\n");
+	// int asd = ft_printf("|%|\n");
+	// int asd2 = printf("|%|\n");
+	// ft_printf("%\n");
+	// printf("%\n");
+	// ft_printf("%.5p\n", 0);
+	// printf("%.5p\n", 0);
+	// ft_printf("%#.o\n", 42);
+	// printf("%#.o\n", 42);
+	// ft_printf("%#.x\n", 42);
+	// printf("%#.x\n", 42);
+	// ft_printf("%#.3o\n", 1);
+	// printf("%#.3o\n", 1);
+	// ft_printf("%#.3x\n", 1);
+	// printf("%#.3x\n", 1);
+	ft_printf("{% 03d}\n", 0);
+	printf("{% 03d}\n", 0);
+	printf("|%|\n");
+	localerr = errno;
+	printf("errno = %d: %s\n", localerr, strerror(localerr));
+	ft_printf("{%}");
+	localerr = errno;
+	printf("errno = %d: %s\n", localerr, strerror(localerr));
+	// printf("%d == %d\n", asd, asd2);
+	// Does not work
+	// int our = ft_printf("%C", 42);
+	// size_t their = printf("%C", 42);
+	// printf("Our %d == Their %d\n", our, printf("%C", 42));
+
+	// printf("%hhS, %hhS\n", 0, L"米米");
+	// ft_printf("%hhS, %hhS\n", 0, L"米米");
+	printf("============================\nORIGINAL\n ============================\n");
 	// printf("%d %d %d %d\n", sizeof(long int), sizeof(long), sizeof(long long int), sizeof(long long));
 	// printf("Itoa of 922337203854775807: |%s|\n", ft_llitoa_tobase2(922337203854775808, DECIMAL));
 	// printf("%d %3s %S\n", NULL, NULL, NULL);
