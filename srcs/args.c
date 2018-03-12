@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 14:50:06 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 18:14:04 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	parse_flags(char **ptr, t_finfo *fmt)
 	int		i;
 
 	i = 0;
-	while (ft_strchr(FLAGS, **ptr))
+	while (ft_strchr(FLAGS, **ptr) && **ptr)
 	{
 		if (!ft_strchr(fmt->flags, **ptr))
 			fmt->flags[i++] = **ptr;
@@ -70,7 +70,7 @@ char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 	if (!ft_strchr(FORMATS, fmt->format) && !ft_isalpha(fmt->format)
 		&& ft_isprint(fmt->format))
 		errno = EILSEQ;
-	if (*ptr != '\0')
+	if (**ptr != '\0')
 		(*ptr)++;
 	return (*ptr);
 }
@@ -79,7 +79,7 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 {
 	char	f;
 
-	f = fmt->format;
+	f = fmt->format ? fmt->format : -1;
 	if (ft_strchr("di", f))
 		return (print_arg_int(args, fmt));
 	else if (ft_strchr("oOuUxX", f) != NULL)
@@ -90,7 +90,7 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 		return (print_arg_lint(args, fmt));
 	else if (ft_strchr("psS", f))
 		return (print_arg_ptr(args, fmt));
-	else
+	else if (f > 0)
 		return (ft_putfmtc(f, fmt));
 	return (0);
 }
