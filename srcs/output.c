@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 13:18:27 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 17:26:48 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 {
 	if ((fmt->format == 'd' || fmt->format == 'i') && !fmt->prefix[0])
-	{
 		if (has_flag(fmt, '+'))
 			fmt->prefix = "+";
-		else if (has_flag(fmt, ' '))
-			fmt->width = MAX(fmt->width, (int)output_len + 1);
-	}
 	if (has_flag(fmt, '-'))
 		fmt->padding = -1;
 	if (has_flag(fmt, '-') || !has_flag(fmt, '0')
@@ -40,6 +36,21 @@ void	apply_flags(t_finfo *fmt, char *output, size_t output_len)
 	}
 	if (fmt->format == 'p')
 		fmt->prefix = "0x";
+}
+
+int		apply_space_flag(t_finfo *fmt)
+{
+	char	f;
+	int		printed;
+
+	printed = 0;
+	f = fmt->format;
+	if (ft_strchr("di", f) && has_flag(fmt, ' ') && !*fmt->prefix)
+	{
+		fmt->width--;
+		ft_putchar(' ');
+	}
+	return (printed);
 }
 
 void	apply_precision(t_finfo *fmt, char **output, size_t *len)
@@ -134,6 +145,7 @@ size_t	ft_putfmtnbr(t_finfo *fmt, char *s)
 		fmt->prefix = "-";
 	len = ft_strlen(s);
 	apply_flags(fmt, s, len);
+	len += apply_space_flag(fmt);
 	p_len = ft_strlen(fmt->prefix);
 	padding_size = fmt->width - MAX((int)len, fmt->precision) - p_len;
 	if (fmt->padding_char == '0')
@@ -169,9 +181,9 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 	else
 	{
 		if (f == 'p')
-		s = ft_ullitoa_tobase((unsigned long)p, HEX);
-	else
-		s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
+			s = ft_ullitoa_tobase((unsigned long)p, HEX);
+		else
+			s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
 		return (ft_putfmtnbr(fmt, s));
 	}
 	return (ft_putfmtstr(fmt, s));
