@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/12 13:27:39 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 14:55:26 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,11 @@ size_t	print_arg_ptr(va_list *args, t_finfo *fmt)
 
 	if (fmt->modifier == MDF_L && fmt->format == 's')
 		fmt->format = 'S';
-	// if (fmt->format == 'S')
-	// 	p = (wchar_t *)va_arg(*args, wchar_t *);
-		// return (ft_putfmtwd(fmt, p));
+	if (fmt->format == 's' && fmt->modifier == MDF_W)
+	{
+		p = (wchar_t *)va_arg(*args, wchar_t *);
+		return (ft_putfmtwd(fmt, p));
+	}
 	p = va_arg(*args, void *);
 	return (ft_putfmt(p, fmt));
 }
@@ -88,9 +90,11 @@ size_t	print_arg_char(va_list *args, t_finfo *fmt)
 	f = fmt->format;
 	if (m == MDF_L)
 		f = 'C';
-	if (f == 'C')
+	if (f == 'c' && fmt->modifier == MDF_W)
+	{
 		n = (wint_t)va_arg(*args, wint_t);
-		// return (ft_print_wchar(n));
+		return (ft_print_wchar(n));
+	}
 	else
 		n = (char)va_arg(*args, int);
 	return (ft_putfmt((void *)&n, fmt));
