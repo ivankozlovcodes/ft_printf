@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 18:14:04 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 18:21:19 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ char	*parse_arg(va_list *args, t_finfo *fmt, char **ptr)
 		(*ptr)++;
 	*ptr = tmp ? tmp : *ptr;
 	fmt->format = **ptr;
-	if (!ft_strchr(FORMATS, fmt->format) && !ft_isalpha(fmt->format)
-		&& ft_isprint(fmt->format))
-		errno = EILSEQ;
+	// if (!ft_strchr(FORMATS, fmt->format) && !ft_isalpha(fmt->format)
+	// 	&& ft_isprint(fmt->format) && fmt->format != '}')
+	// 	errno = EILSEQ;
 	if (**ptr != '\0')
 		(*ptr)++;
 	return (*ptr);
