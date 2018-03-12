@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 19:38:46 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 23:17:26 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ size_t	print_arg_ptr(va_list *args, t_finfo *fmt)
 
 	if (fmt->modifier == MDF_L && fmt->format == 's')
 		fmt->format = 'S';
+	if (fmt->format == 'S')
+	{
+		p = (wchar_t *)va_arg(*args, wchar_t *);
+		return (ft_putfmtwd(fmt, p));
+	}
 	p = va_arg(*args, void *);
 	return (ft_putfmt(p, fmt));
 }

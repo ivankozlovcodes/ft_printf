@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:07:29 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/09 21:07:45 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 22:56:06 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,21 @@ size_t	ft_print_wchar(wint_t c)
 			output |= (((c >> 18) & 0x7) << 24);
 	}
 	output = to_little_endian(output);
-	write(1, &output, 4);
+	write(1, &output, sizeof(wchar_t));
 	return (len);
 }
+
+size_t	ft_putfmtwd(t_finfo *fmt, wchar_t *s)
+{
+	int		len;
+
+	len = 0;
+	fmt++;
+	while (s && *s)
+	{
+		len += ft_print_wchar(*s);
+		s++;
+	}
+	return (len);
+}
+

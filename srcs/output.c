@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 19:39:02 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 22:23:59 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 		return (ft_putfmtc(*(char *)p, fmt));
 	else if (f == 's')
 		s = (char *)p;
+	else if (f == 'S')
+		return (ft_putfmtwd(fmt, (wchar_t *)p));
 	else
 	{
 		if (f == 'p')

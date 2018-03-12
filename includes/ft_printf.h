@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 19:29:58 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 22:24:49 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ size_t				ft_putfmtstr(t_finfo *fmt, char *s);
 int					apply_flags(t_finfo *fmt, char *output, size_t output_len);
 int					apply_precision(t_finfo *fmt, char **output, size_t *len);
 int					apply_precision_nbr(t_finfo *fmt, char *output, size_t len);
+
+size_t				ft_print_wchar(wint_t c);
+size_t				ft_putfmtwd(t_finfo *fmt, wchar_t *s);
 
 int					skipstr(char **s1, char *s2);
 int					skipchr(char **s, char c);
