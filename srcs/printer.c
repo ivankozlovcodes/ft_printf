@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:21:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 23:17:26 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 13:23:04 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,8 @@ size_t	print_arg_char(va_list *args, t_finfo *fmt)
 	if (m == MDF_L)
 		f = 'C';
 	if (f == 'C')
-	{
 		n = (wint_t)va_arg(*args, wint_t);
-		return (ft_print_wchar(n));
-	}
+		// return (ft_print_wchar(n));
 	else
 		n = (char)va_arg(*args, int);
 	return (ft_putfmt((void *)&n, fmt));

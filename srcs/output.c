@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/12 00:02:20 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 13:22:45 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 		s = ft_ullitoa_tobase(*(unsigned long long int *)p, fmt->base);
 		return (ft_putfmtnbr(fmt, s));
 	}
-	else if (f == 'c')
+	else if (f == 'c' || f == 'C')
 		return (ft_putfmtc(*(char *)p, fmt));
 	else if (f == 's')
 	{
