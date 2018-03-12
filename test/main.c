@@ -6,150 +6,147 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 18:18:53 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 00:00:00 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <limits.h>
+#include <locale.h>
 
-int		main(void)
+void	info(void)
 {
-	int	n;
 	wchar_t		c;
-	long long	lln;
-	long long	llneg;
-	int			tmp;
-	int			localerr;
+	printf("===========INFO===========\n");
+}
+
+void	basic(void)
+{
+	int			n;
+	wchar_t		c;
 
 	n = 10;
-	lln = 9223372036854775807;
-	llneg = -9223372036854775807;
-	printf("===========INFO===========\n");
 	c = L'诶';
-	// printf("Wchar (a): %lc\n", c);
-	// printf("Wchar as char %d: %c\n", c, c);
-	int		a = 2147483647;
-	int		*p = &a;
-	int		**p2 = &p;
-	// printf("%p\n", p);
-	// printf("%p\n", p2);
-	// ft_printf("%p\n", p);
-	// ft_printf("%p\n", p2);
-	// ft_printf("MINE ===============================\n");
-	// ft_printf("ll number: %o\n", n);
-	// ft_printf("o number: %llo\n", n);
-	// ft_printf("llneg number: %lld\n", llneg);
-	// ft_printf("llneg number octal: %llo\n", llneg);
-	// ft_printf("llneg number octal: %llx\n", llneg);
-	// ft_printf("x number: %x\n", n);
-	// ft_printf("X number: %X\n", n);
-	// ft_printf("Printable char %c\n", 'a');
-	// ft_printf("Printable char %c\n", 'A');
-	// ft_printf("Octal over int(o): %o\n", INT32_MAX + 10);
-	// ft_printf("Wchar: %d\n", c);
-	// ft_printf("Wchar: %lc\n", c);
-	// ft_printf("%s\n", "诶");
-	// ft_printf("String: %s\n", "asdasdASD");
-	// ft_printf("hhd of 128 %hhd\n", 128);
-	// ft_printf("precision for 123: %.6d\n", 123);
-	// ft_printf("Width for hello: [%10s]\n", "Hello");
-	// ft_printf("Width for hello: [%-10s]\n", "Hello");
-	// ft_printf("' ' flag |% d|\n", n); 
-	// ft_printf("' ' flag |% x|\n", n); 
-	// ft_printf("' ' flag for negative |%  d|\n", -n); 
-	// ft_printf("'0' flag |%0010x|\n", n); 
-	// ft_printf("'0' flag |%0010s|\n", "string"); 
-	// ft_printf("'+' flag |%++d|\n", n); 
-	// ft_printf("'+' flag |%++hd|\n", n); 
-	// ft_printf("padding with '-' flag |%--10d|\n", n); 
-	// ft_printf("padding without '-' flag |%10d|\n", n); 
-	// ft_printf("Double persent: |%10%|\n", n);
-	// ft_printf("'#' flag |%##x|\n", n); 
-	// ft_printf("Triple persent: |%%%|\n", n);
+	printf("Basic 42 checker\n ============================\n");
+	ft_printf("ll number: %o\n", n);
+	ft_printf("o number: %llo\n", n);
+	ft_printf("x number: %x\n", n);
+	ft_printf("X number: %X\n", n);
+	ft_printf("Printable char %c\n", 'a');
+	ft_printf("Printable char %c\n", 'A');
+	ft_printf("Octal over int(o): %o\n", INT32_MAX + 10);
+	ft_printf("Wchar: %d\n", c);
+	ft_printf("Wchar: %lc\n", c);
+	ft_printf("String: %s\n", "asdasdASD");
+	ft_printf("hhd of 128 %hhd\n", 128);
+	ft_printf("precision for 123: %.6d\n", 123);
+	ft_printf("Width for hello: [%10s]\n", "Hello");
+	ft_printf("Width for hello: [%-10s]\n", "Hello");
+	ft_printf("' ' flag |% d|\n", n);
+	ft_printf("' ' flag |% x|\n", n);
+	ft_printf("' ' flag for negative |%  d|\n", -n);
+	ft_printf("'0' flag |%0010x|\n", n);
+	ft_printf("'0' flag |%0010s|\n", "string");
+	ft_printf("'+' flag |%++d|\n", n);
+	ft_printf("'+' flag |%++hd|\n", n);
+	ft_printf("padding with '-' flag |%--10d|\n", n);
+	ft_printf("padding without '-' flag |%10d|\n", n);
+	ft_printf("Double persent: |%10%|\n", n);
+	ft_printf("'#' flag |%##x|\n", n);
+	ft_printf("Triple persent: |%%%|\n", n);
+}
+
+void	ftchecker(void)
+{
+	int		tmp;
+
 	printf("Fixing 42 checker\n ============================\n");
-	// ft_printf("%lx\n", 4294967296);
-	// ft_printf("%hhX\n", 4294967296);
-	// ft_printf("%jx\n", 4294967296);
-	// ft_printf("%jx\n", -4294967296);
-	// tmp = ft_printf("#x: %#x\n", 42);
-	// ft_printf("Adding length for #x with nl case: 9==%d\n", tmp);
-	// ft_printf("|    0x2a| == |%#8x|\n", 42);
-	// ft_printf("|0| = |%#x|\n", 0);
-	// ft_printf("|0x2a    | = |%#-08x|\n", 42);
-	// ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
-	// ft_printf("@moulitest: |%.x %.0x|\n", 0, 0);
-	// ft_printf("@moulitest: |%5.x %5.0x|\n", 0, 0);
-	// ft_printf("%d %s \n", NULL, NULL, NULL);
-	// ft_printf("%d", -1);
-	// ft_printf("@moulitest: %.10d", -42);
-	// ft_printf("%10.5d", 4242);
-	// ft_printf("|%10.5d|\n", -4242);
-	// ft_printf("%%");
-	// // ft_printf("%+d", 42);
-	// ft_printf("@moulitest: %#.x %#.0x", 0, 0);
-	// ft_printf("| 00| = |%03.2d|\n", 0);
-	// ft_printf("|+0042| = |%0+5d|\n", 42);
-	// ft_printf("| 42| = |% d|", 42);
-	// printf("\n");
-	// ft_printf("|-1| = |%d|", -1);
+	ft_printf("%lx\n", 4294967296);
+	ft_printf("%hhX\n", 4294967296);
+	ft_printf("%jx\n", 4294967296);
+	ft_printf("%jx\n", -4294967296);
+	tmp = ft_printf("#x: %#x\n", 42);
+	ft_printf("Adding length for #x with nl case: 9==%d\n", tmp);
+	ft_printf("|    0x2a| == |%#8x|\n", 42);
+	ft_printf("|0| = |%#x|\n", 0);
+	ft_printf("|0x2a    | = |%#-08x|\n", 42);
+	ft_printf("@moulitest: %#.x %#.0x\n", 0, 0);
+	ft_printf("@moulitest: |%.x %.0x|\n", 0, 0);
+	ft_printf("@moulitest: |%5.x %5.0x|\n", 0, 0);
+	ft_printf("%d %s \n", NULL, NULL, NULL);
+	ft_printf("%d", -1);
+	ft_printf("@moulitest: %.10d", -42);
+	ft_printf("%10.5d", 4242);
+	ft_printf("|%10.5d|\n", -4242);
+	ft_printf("%%");
+	ft_printf("@moulitest: %#.x %#.0x", 0, 0);
+	ft_printf("| 00| = |%03.2d|\n", 0);
+	ft_printf("|+0042| = |%0+5d|\n", 42);
+	ft_printf("| 42| = |% d|", 42);
+	printf("\n");
+	ft_printf("|-1| = |%d|", -1);
+}
+
+void	moulinette(void)
+{
+	int localerr;
+
 	printf("Fixing Moulinete\n ============================\n");
-	// ft_printf("%zO, %zO\n", 0, USHRT_MAX);
-	// printf("%zO, %zO\n", 0, USHRT_MAX);
-	// ft_printf("%jO, %jO\n", 0, USHRT_MAX);
-	// printf("%jO, %jO\n", 0, USHRT_MAX);
-	// ft_printf("%zD, %zD\n", 0, USHRT_MAX);
-	// printf("%zD, %zD\n", 0, USHRT_MAX);
-	// ft_printf("%15.4u\n", 42);
-	// printf("%15.4u\n", 42);
-	// ft_printf("{%3*d}\n", 0, 0);
-	// printf("{%3*d}\n", 0, 0);
-	// ft_printf("%.d, %.0d\n", 0, 0);
-	// printf("%.d, %.0d\n", 0, 0);
-	// ft_printf("{%05.*d}\n", -15, 42);
-	// printf("{%05.*d}\n", -15, 42);
-	// ft_printf("%O\n", LONG_MAX);
-	// printf("%O\n", LONG_MAX);
-	// ft_printf("%U\n", ULONG_MAX);
-	// printf("%U\n", ULONG_MAX);
-	// ft_printf("|.o, .0o| %.o, %.0o\n", 0, 0);
-	// printf("%.o, %.0o\n", 0, 0);
-	// ft_printf("%.x, %.0x\n", 0, 0);
-	// printf("%.x, %.0x\n", 0, 0);
-	// ft_printf("|#.x, #.0x| %#.x, %#.0x\n", 0, 0);
-	// printf("%#.x, %#.0x\n", 0, 0);
-	// ft_printf("%#o\n", 0);
-	// printf("%#o\n", 0);
-	// ft_printf("%#.o\n", 0);
-	// printf("%#.o\n", 0);
-	// ft_printf("%hhu, %hhu\n", 0, UCHAR_MAX + 42);
-	// printf("%hhu, %hhu\n", 0, UCHAR_MAX + 42);
-	// printf("%.*s\n", -1, NULL);
-	// ft_printf("%.*s\n", -1, "asd");
-	// ft_printf("%hhD, %hhD\n", 0, USHRT_MAX);
-	// printf("%hhD, %hhD\n", 0, USHRT_MAX);
-	// ft_printf("%#O\n", 1);
-	// printf("%#O\n", 1);
-	// ft_printf("%#.3o\n", 1);
-	// printf("%#.3o\n", 1);
-	// printf("%15.4d\n", -42);
-	// ft_printf("%15.4d\n", -42);
-	// ft_printf("{%10R}\n");
-	// printf("{%10R}\n");
-	// int asd = ft_printf("|%|\n");
-	// int asd2 = printf("|%|\n");
-	// ft_printf("%\n");
-	// printf("%\n");
-	// ft_printf("%.5p\n", 0);
-	// printf("%.5p\n", 0);
-	// ft_printf("%#.o\n", 42);
-	// printf("%#.o\n", 42);
-	// ft_printf("%#.x\n", 42);
-	// printf("%#.x\n", 42);
-	// ft_printf("%#.3o\n", 1);
-	// printf("%#.3o\n", 1);
-	// ft_printf("%#.3x\n", 1);
-	// printf("%#.3x\n", 1);
+	ft_printf("@moulitest: %#.x %#.0x", 0, 0);
+	ft_printf("%zO, %zO\n", 0, USHRT_MAX);
+	printf("%zO, %zO\n", 0, USHRT_MAX);
+	ft_printf("%jO, %jO\n", 0, USHRT_MAX);
+	printf("%jO, %jO\n", 0, USHRT_MAX);
+	ft_printf("%zD, %zD\n", 0, USHRT_MAX);
+	printf("%zD, %zD\n", 0, USHRT_MAX);
+	ft_printf("%15.4u\n", 42);
+	printf("%15.4u\n", 42);
+	ft_printf("{%3*d}\n", 0, 0);
+	printf("{%3*d}\n", 0, 0);
+	ft_printf("%.d, %.0d\n", 0, 0);
+	printf("%.d, %.0d\n", 0, 0);
+	ft_printf("{%05.*d}\n", -15, 42);
+	printf("{%05.*d}\n", -15, 42);
+	ft_printf("%O\n", LONG_MAX);
+	printf("%O\n", LONG_MAX);
+	ft_printf("%U\n", ULONG_MAX);
+	printf("%U\n", ULONG_MAX);
+	ft_printf("|.o, .0o| %.o, %.0o\n", 0, 0);
+	printf("%.o, %.0o\n", 0, 0);
+	ft_printf("%.x, %.0x\n", 0, 0);
+	printf("%.x, %.0x\n", 0, 0);
+	ft_printf("|#.x, #.0x| %#.x, %#.0x\n", 0, 0);
+	printf("%#.x, %#.0x\n", 0, 0);
+	ft_printf("%#o\n", 0);
+	printf("%#o\n", 0);
+	ft_printf("%#.o\n", 0);
+	printf("%#.o\n", 0);
+	ft_printf("%hhu, %hhu\n", 0, UCHAR_MAX + 42);
+	printf("%hhu, %hhu\n", 0, UCHAR_MAX + 42);
+	printf("%.*s\n", -1, NULL);
+	ft_printf("%.*s\n", -1, "asd");
+	ft_printf("%hhD, %hhD\n", 0, USHRT_MAX);
+	printf("%hhD, %hhD\n", 0, USHRT_MAX);
+	ft_printf("%#O\n", 1);
+	printf("%#O\n", 1);
+	ft_printf("%#.3o\n", 1);
+	printf("%#.3o\n", 1);
+	printf("%15.4d\n", -42);
+	ft_printf("%15.4d\n", -42);
+	ft_printf("{%10R}\n");
+	printf("{%10R}\n");
+	ft_printf("%\n");
+	printf("%\n");
+	ft_printf("%.5p\n", 0);
+	printf("%.5p\n", 0);
+	ft_printf("%#.o\n", 42);
+	printf("%#.o\n", 42);
+	ft_printf("%#.x\n", 42);
+	printf("%#.x\n", 42);
+	ft_printf("%#.3o\n", 1);
+	printf("%#.3o\n", 1);
+	ft_printf("%#.3x\n", 1);
+	printf("%#.3x\n", 1);
 	ft_printf("{% 03d}\n", 0);
 	printf("{% 03d}\n", 0);
 	printf("|%|\n");
@@ -158,43 +155,98 @@ int		main(void)
 	ft_printf("{%}");
 	localerr = errno;
 	printf("errno = %d: %s\n", localerr, strerror(localerr));
-	// printf("%d == %d\n", asd, asd2);
-	// Does not work
-	// int our = ft_printf("%C", 42);
-	// size_t their = printf("%C", 42);
-	// printf("Our %d == Their %d\n", our, printf("%C", 42));
+	ft_printf("%zO, %zO\n", 0, USHRT_MAX);
+	printf("%zO, %zO\n", 0, USHRT_MAX);
+	ft_printf("%jO, %jO\n", 0, USHRT_MAX);
+	printf("%jO, %jO\n", 0, USHRT_MAX);
+	ft_printf("%zD, %zD\n", 0, USHRT_MAX);
+	printf("%zD, %zD\n", 0, USHRT_MAX);
+	ft_printf("%15.4u\n", 42);
+	printf("%15.4u\n", 42);
+	ft_printf("{%3*d}\n", 0, 0);
+	printf("{%3*d}\n", 0, 0);
+	ft_printf("%.d, %.0d\n", 0, 0);
+	printf("%.d, %.0d\n", 0, 0);
+	ft_printf("{%05.*d}\n", -15, 42);
+	printf("{%05.*d}\n", -15, 42);
+	ft_printf("%O\n", LONG_MAX);
+	printf("%O\n", LONG_MAX);
+	ft_printf("%U\n", ULONG_MAX);
+	printf("%U\n", ULONG_MAX);
+	ft_printf("|.o, .0o| %.o, %.0o\n", 0, 0);
+	printf("%.o, %.0o\n", 0, 0);
+	ft_printf("%.x, %.0x\n", 0, 0);
+	printf("%.x, %.0x\n", 0, 0);
+	ft_printf("|#.x, #.0x| %#.x, %#.0x\n", 0, 0);
+	printf("%#.x, %#.0x\n", 0, 0);
+	ft_printf("%#o\n", 0);
+	printf("%#o\n", 0);
+	ft_printf("%#.o\n", 0);
+	printf("%#.o\n", 0);
+	ft_printf("%hhu, %hhu\n", 0, UCHAR_MAX + 42);
+	printf("%hhu, %hhu\n", 0, UCHAR_MAX + 42);
+	printf("%.*s\n", -1, NULL);
+	ft_printf("%.*s\n", -1, "asd");
+	ft_printf("%hhD, %hhD\n", 0, USHRT_MAX);
+	printf("%hhD, %hhD\n", 0, USHRT_MAX);
+	ft_printf("%#O\n", 1);
+	printf("%#O\n", 1);
+	ft_printf("%#.3o\n", 1);
+	printf("%#.3o\n", 1);
+	printf("%15.4d\n", -42);
+	ft_printf("%15.4d\n", -42);
+	ft_printf("{%10R}\n");
+	printf("{%10R}\n");
+	ft_printf("%\n");
+	printf("%\n");
+	ft_printf("%.5p\n", 0);
+	printf("%.5p\n", 0);
+	ft_printf("%#.o\n", 42);
+	printf("%#.o\n", 42);
+	ft_printf("%#.x\n", 42);
+	printf("%#.x\n", 42);
+	ft_printf("%#.3o\n", 1);
+	printf("%#.3o\n", 1);
+	ft_printf("%#.3x\n", 1);
+	printf("%#.3x\n", 1);
+	ft_printf("{% 03d}\n", 0);
+	printf("{% 03d}\n", 0);
+	printf("|%|\n");
+	localerr = errno;
+	printf("errno = %d: %s\n", localerr, strerror(localerr));
+	ft_printf("{%}");
+	localerr = errno;
+	printf("errno = %d: %s\n", localerr, strerror(localerr));
+}
 
-	// printf("%hhS, %hhS\n", 0, L"米米");
-	// ft_printf("%hhS, %hhS\n", 0, L"米米");
-	printf("============================\nORIGINAL\n ============================\n");
-	// printf("%d %d %d %d\n", sizeof(long int), sizeof(long), sizeof(long long int), sizeof(long long));
-	// printf("Itoa of 922337203854775807: |%s|\n", ft_llitoa_tobase2(922337203854775808, DECIMAL));
-	// printf("%d %3s %S\n", NULL, NULL, NULL);
-	// printf("Itoa of 18446744073709551615: |%s|\n", ft_ullitoa_tobase(18446744073709551615, DECIMAL));
-	// printf("llneg number: %lld\n", llneg);
-	// printf("llneg number octal: %llo\n", llneg);
-	// printf("llneg number octal: %llx\n", llneg);
-	// printf("Octal over int(o): %o\n", INT32_MAX + 10);
-	// printf("Printable char %c\n", 'a');
-	// printf("hhx of 17 %hhx\n", (unsigned char)17);
-	// printf("precision for 123: %.6d\n", 123);
-	// printf("precision for 123: %.2d\n", 123);
-	// printf("hhd of 128 %hhd\n", 128);
-	// printf("pointer %p\n", &n);
-	// printf("' ' flag |%  d|\n", n); 
-	// printf("' ' flag |%  x|\n", n); 
-	// printf("' ' flag for negative |%  d|\n", -n); 
-	// printf("'0' flag |%0010x|\n", n); 
-	// printf("'0' flag |%0010s|\n", "string"); 
-	// printf("'+' flag |%++d|\n", n); 
-	// printf("'+' flag |%++hd|\n", n); 
-	// printf("padding with '-' flag |%--10d|\n", n); 
-	// printf("padding without '-' flag |%10d|\n", n); 
-	// printf("'#' flag |%##x|\n", n); 
-	// printf("Double persent: |%10%|\n", n);
-	// printf("Triple persent: |%%%|\n", n);
-	// int *p = &n;
-	// int *p2 = &p;
-	// ft_printf("%x\n", p2);
+void widechar(void)
+{
+	wchar_t		c;
+
+	setlocale(LC_ALL, "en_US.UTF-8");
+	printf("WIDECHAR\n ============================ \n");
+	c = L'诶';
+	ft_printf("%lc\n", c);
+	ft_printf("%S\n", L"Á±≥");
+	printf("%S\n", L"Á±≥");
+	ft_printf("%S\n", L"ابتثجحخدذرزسشصضطظعغفقكلمنهوي");
+	printf("%ls\n", L"ابتثجحخدذرزسشصضطظعغفقكلمنهوي");
+	printf("Errno: %d. Msg: %s\n", errno, strerror(errno));
+	if (1 == 2) // have no idea
+	{
+		ft_printf("%hhS, %hhS\n", 0, L"米米");
+		printf("%hhS, %hhS\n", 0, L"米米");
+	}
+}
+
+void stringprec(void)
+{
+	ft_printf("%.4s", "42 is the answer");
+}
+
+int		main(void)
+{
+	// widechar();
+	stringprec();
 	return (0);
 }
