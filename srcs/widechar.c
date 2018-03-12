@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:07:29 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 22:56:06 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 13:40:18 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ size_t	ft_putfmtwd(t_finfo *fmt, wchar_t *s)
 	fmt++;
 	while (s && *s)
 	{
-		len += ft_print_wchar(*s);
+		ft_putchar((char)*s);
+		len++;
+		// len += ft_print_wchar(*s);
 		s++;
 	}
 	return (len);

@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/12 13:27:10 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 13:35:43 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,13 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 	}
 	else if (f == 'c' || f == 'C')
 		return (ft_putfmtc(*(char *)p, fmt));
-	else if (f == 's' || f == 'S')
+	else if (f == 's')
 	{
 		if (p)
 			s = ft_strdup((char *)p);
 	}
-	// else if (f == 'S')
-		// return (ft_putfmtwd(fmt, (wchar_t *)p));
+	else if (f == 'S')
+		return (ft_putfmtwd(fmt, (wchar_t *)p));
 	else
 	{
 		if (f == 'p')
