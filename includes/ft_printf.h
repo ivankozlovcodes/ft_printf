@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 22:24:49 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 14:51:34 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define MDF_H (1)
 # define MDF_J (2)
 # define MDF_Z (3)
+# define MDF_W (4)
 # define MDF_LL (10)
 # define MDF_HH (11)
 
@@ -32,7 +33,7 @@
 # define HEX_UPPER "0123456789ABCDEF"
 
 # define FLAGS "#0- +"
-# define MODIFIERS "lhjz"
+# define MODIFIERS "lhjzw"
 # define FORMATS "sSpdDioOuUxXcC%"
 
 # define THREE_BYTES_MASK (0xE08080)
