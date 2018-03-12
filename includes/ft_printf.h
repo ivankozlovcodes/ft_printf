@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 09:45:05 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 14:48:29 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/11 19:29:58 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct		s_finfo
 	char			*base;
 	int				modifier;
 	int				precision;
+	char			*p_string;
 	int				width;
 	int				padding;
 	char			flags[6];
@@ -68,6 +69,10 @@ size_t				ft_print_wchar(wint_t c);
 size_t				ft_putfmt(void *p, t_finfo *fmt);
 size_t				ft_putfmtnbr(t_finfo *fmt, char *s);
 size_t				ft_putfmtstr(t_finfo *fmt, char *s);
+
+int					apply_flags(t_finfo *fmt, char *output, size_t output_len);
+int					apply_precision(t_finfo *fmt, char **output, size_t *len);
+int					apply_precision_nbr(t_finfo *fmt, char *output, size_t len);
 
 int					skipstr(char **s1, char *s2);
 int					skipchr(char **s, char c);
