@@ -165,10 +165,11 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 		return (ft_putfmtc(*(char *)p, fmt));
 	else if (f == 's')
 		s = (char *)p;
-	else if (f == 'p')
-		s = ft_ullitoa_tobase((unsigned long)p, HEX);
 	else
 	{
+		if (f == 'p')
+		s = ft_ullitoa_tobase((unsigned long)p, HEX);
+	else
 		s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
 		return (ft_putfmtnbr(fmt, s));
 	}
