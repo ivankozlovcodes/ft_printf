@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:07:29 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/12 15:04:16 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 15:06:52 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ size_t	ft_putfmtwd(t_finfo *fmt, wchar_t *s)
 	}
 	return (len);
 }
-

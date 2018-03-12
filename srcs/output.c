@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/12 15:00:14 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 15:15:14 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,22 @@ size_t	ft_putfmtnbr(t_finfo *fmt, char *s)
 	return (MAX(fmt->width, (int)len + (int)p_len));
 }
 
+char	*convert_nbr_arg(void *p, t_finfo *fmt)
+{
+	char	f;
+	char	*s;
+
+	s = NULL;
+	f = fmt->format;
+	if (f == 'p')
+		s = ft_ullitoa_tobase((unsigned long)p, HEX);
+	else if (ft_strchr("oOuUxX", f))
+		s = ft_ullitoa_tobase(*(unsigned long long int *)p, fmt->base);
+	else
+		s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
+	return (s);
+}
+
 size_t	ft_putfmt(void *p, t_finfo *fmt)
 {
 	char			f;
@@ -87,30 +103,21 @@ size_t	ft_putfmt(void *p, t_finfo *fmt)
 
 	f = fmt->format;
 	s = NULL;
-	if (ft_strchr("oOuUxX", f))
-	{
-		s = ft_ullitoa_tobase(*(unsigned long long int *)p, fmt->base);
-		return (ft_putfmtnbr(fmt, s));
-	}
-	else if (f == 'c' && fmt->modifier == MDF_W)
+	if (f == 'c' && fmt->modifier == MDF_W)
 		return (ft_print_wchar(*(wchar_t *)p));
 	else if (f == 'c' || f == 'C')
 		return (ft_putfmtc(*(char *)p, fmt));
-	else if ((f == 's' && fmt->modifier == MDF_W)
-		|| f == 'S')
-		return (ft_putfmtwd(fmt, (wchar_t *)p));
-	else if (f == 's')
+	else if (f == 's' || f == 'S')
 	{
-		if (p)
-			s = ft_strdup((char *)p);
+		if (f == 'S' || fmt->modifier == MDF_W)
+			return (ft_putfmtwd(fmt, (wchar_t *)p));
+		else
+		{
+			if (p)
+				s = ft_strdup((char *)p);
+		}
 	}
 	else
-	{
-		if (f == 'p')
-			s = ft_ullitoa_tobase((unsigned long)p, HEX);
-		else
-			s = ft_llitoa_tobase(*(long long int *)p, fmt->base);
-		return (ft_putfmtnbr(fmt, s));
-	}
+		return (ft_putfmtnbr(fmt, convert_nbr_arg(p, fmt)));
 	return (ft_putfmtstr(fmt, s));
 }
