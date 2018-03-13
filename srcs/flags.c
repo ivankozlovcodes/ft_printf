@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 18:28:54 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 19:07:09 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 18:59:01 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	apply_hex_flag(t_finfo *fmt, char *output, size_t len)
 			fmt->prefix = "0x";
 		else if (fmt->format == 'X')
 			fmt->prefix = "0X";
-		else if (ft_strchr("oO", fmt->format) && fmt->precision < (int)len + 1)
+		else if (ft_strchr("oO", fmt->format)
+			&& (fmt->precision >= (int)len + 1 || fmt->precision <= 0))
 			fmt->prefix = "0";
 	}
 }
