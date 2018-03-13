@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 19:44:31 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 18:27:19 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ size_t	process_arg(va_list *args, char **ptr)
 	fmt.precision = -1;
 	fmt.prefix = "\0";
 	fmt.p_string = NULL;
+	fmt.flags[0] = '\0';
 	if (**ptr == '%')
 	{
 		(*ptr)++;

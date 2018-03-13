@@ -6,11 +6,21 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 21:03:03 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/12 15:15:14 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 16:27:26 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_free(char *p, t_finfo *fmt)
+{
+	if (p)
+		free(p);
+	if (fmt->p_string)
+		free(fmt->p_string);
+	p = NULL;
+	fmt->p_string = NULL;
+}
 
 size_t	ft_putfmtc(char c, t_finfo *fmt)
 {
@@ -23,6 +33,7 @@ size_t	ft_putfmtc(char c, t_finfo *fmt)
 	ft_putchar(c);
 	if (fmt->padding < 0)
 		ft_putnchar(fmt->padding_char, fmt->width - 1);
+	ft_free(NULL, fmt);
 	return (MAX(fmt->width, 1));
 }
 
@@ -50,6 +61,7 @@ size_t	ft_putfmtstr(t_finfo *fmt, char *s)
 	if (fmt->padding < 0)
 		ft_putnchar(fmt->padding_char, fmt->width - len);
 	len = MAX(fmt->width, (int)len);
+	ft_free(s, fmt);
 	return (len);
 }
 
@@ -77,6 +89,7 @@ size_t	ft_putfmtnbr(t_finfo *fmt, char *s)
 	ft_putstr(s);
 	if (fmt->padding < 0)
 		ft_putnchar(fmt->padding_char, padding_size);
+	ft_free(*fmt->prefix == '-' ? s - 1 : s, fmt);
 	return (MAX(fmt->width, (int)len + (int)p_len));
 }
 
