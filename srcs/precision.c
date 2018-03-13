@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/11 18:40:57 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/11 19:34:54 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 18:02:41 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		apply_precision(t_finfo *fmt, char **output, size_t *len)
 		(*output)[p] = '\0';
 		*len = 0;
 	}
-	else if (ft_strchr("sS", fmt->format) && (int)*len > p)
+	else if (ft_strchr("sS", fmt->format) && (int)*len > p && p > 0)
 	{
 		(*output)[p] = '\0';
 		*len = p;
