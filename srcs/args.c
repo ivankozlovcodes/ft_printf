@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 15:55:20 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/12 18:27:19 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/03/12 18:48:00 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ size_t	print_arg(va_list *args, t_finfo *fmt)
 size_t	process_arg(va_list *args, char **ptr)
 {
 	t_finfo	fmt;
+	int		i;
 
 	fmt.modifier = -1;
 	fmt.width = 0;
@@ -100,7 +101,9 @@ size_t	process_arg(va_list *args, char **ptr)
 	fmt.precision = -1;
 	fmt.prefix = "\0";
 	fmt.p_string = NULL;
-	fmt.flags[0] = '\0';
+	i = -1;
+	while (++i < 6)
+		fmt.flags[i] = '\0';
 	if (**ptr == '%')
 	{
 		(*ptr)++;
