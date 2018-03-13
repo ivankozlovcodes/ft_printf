@@ -6,7 +6,7 @@
 #    By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:22:14 by ikozlov           #+#    #+#              #
-#    Updated: 2018/03/12 13:21:29 by ikozlov          ###   ########.fr        #
+#    Updated: 2018/03/12 19:31:07 by ikozlov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ fclean: clean
 	@make -C $(LIBFT_DIR) fclean
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f $(TEST)
-	@/bin/rm -rf $(TEST).dSYM
+	# @/bin/rm -rf $(TEST).dSYM
 	@echo "[INFO] Executable removed"
 
 test: all
