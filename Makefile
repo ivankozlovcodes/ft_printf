@@ -21,6 +21,7 @@ TEST_DIR = test/
 
 # complier
 CFLAGS = -Wall -Wextra -Werror
+CFLAGS += -O3 -march=native -pipe
 DEBUG = -g 
 
 # src & obj files
@@ -45,7 +46,7 @@ $(NAME): $(OBJ)
 
 $(OBJ): $(SRC)
 	@mkdir -p $(OBJ_DIR)
-	gcc $(CFLAGS) $(DEBUG) $(INCLUDES) -c $^
+	gcc $(CFLAGS) $(INCLUDES) -c $^
 	@mv -f *.o $(OBJ_DIR)
 
 clean:
