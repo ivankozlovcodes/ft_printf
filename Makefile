@@ -6,7 +6,7 @@
 #    By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:22:14 by ikozlov           #+#    #+#              #
-#    Updated: 2018/03/12 19:31:07 by ikozlov          ###   ########.fr        #
+#    Updated: 2018/03/22 19:26:27 by ikozlov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,23 +43,23 @@ $(NAME): $(OBJ)
 	@cp $(LIBFT_DIR)/libft.a ./$(NAME)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
+	@echo "\`ft_printf\` [INFO] Library created"
 
 $(OBJ): $(SRC)
 	@mkdir -p $(OBJ_DIR)
-	gcc $(CFLAGS) $(INCLUDES) -c $^
+	@gcc $(CFLAGS) $(INCLUDES) -c $^
 	@mv -f *.o $(OBJ_DIR)
 
 clean:
 	@make -C $(LIBFT_DIR) clean
 	@/bin/rm -rf $(OBJ_DIR)
-	@echo "[INFO] Object folder removed"
+	@echo "\`ft_printf\` [INFO] Object folder removed"
 
 fclean: clean
 	@make -C $(LIBFT_DIR) fclean
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f $(TEST)
-	# @/bin/rm -rf $(TEST).dSYM
-	@echo "[INFO] Executable removed"
+	@echo "\`ft_printf\` [INFO] Executable removed"
 
 test: all
 	gcc $(DEBUG) -w test/*.c -L . -l ftprintf $(INCLUDES) -o $(TEST)
