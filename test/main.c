@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 17:01:28 by ikozlov           #+#    #+#             */
-/*   Updated: 2018/03/12 00:00:00 by ikozlov          ###   ########.fr       */
+/*   Updated: 2018/08/03 19:24:14 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,6 @@ void stringprec(void)
 
 int		main(void)
 {
-	// widechar();
-	stringprec();
+	ft_printf("Hello %s!", "world");
 	return (0);
 }
