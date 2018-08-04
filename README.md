@@ -30,9 +30,16 @@ Download and compile repo:
     cd ft_printf
     make
 ```
+Not `libftprintf.a` library is created.
 
 ## Examples
-
+There is a main file created for tests. Run command `make test` inside repo folder.
+```sh
+    make test
+    ./a.out
+    > Hello world!
+```
+Fell free to edit main function in `test/main.c` to add more.
 
 ## Authors
 This project was developed by Ivan Kozlov [@ivankozlov95][me]
@@ -44,4 +51,3 @@ This project is licensed under the [GNU General Public License 3][license].
 [pdf]: https://github.com/IvanKozlov95/fillit/blob/master/resources/ft_printf.en.pdf "pdf"
 [license]: https://github.com/IvanKozlov95/fillit/blob/master/LICENSE "license"
 [me]: https://github.com/IvanKozlov95 "ivankozlov95"
-[marc]: https://github.com/mgia "crazy rich asian"
