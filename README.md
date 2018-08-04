@@ -35,7 +35,7 @@ Download and compile repo:
 
 
 ## Authors
-This project was developed by Ivan Kozlov [@ivankozlov95](me)
+This project was developed by Ivan Kozlov [@ivankozlov95][me]
 
 ## License
 This project is licensed under the [GNU General Public License 3][license].
