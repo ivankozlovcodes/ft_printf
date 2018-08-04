@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+         #
+#    By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/19 13:22:14 by ikozlov           #+#    #+#              #
-#    Updated: 2018/03/22 19:26:27 by ikozlov          ###   ########.fr        #
+#    Updated: 2018/08/03 19:29:30 by ivankozlov       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ fclean: clean
 	@echo "\`ft_printf\` [INFO] Executable removed"
 
 test: all
-	gcc $(DEBUG) -w test/*.c -L . -l ftprintf $(INCLUDES) -o $(TEST)
+	gcc -w test/*.c -L . -l ftprintf $(INCLUDES) -o $(TEST)
 
 re: fclean all
 
